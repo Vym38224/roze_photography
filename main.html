@@ -21,12 +21,12 @@
         </div>
         <div class="flex__item--right">
             <nav class="menu">
-                <a class="menu__item" href="#home">Domů</a>
-                <a class="menu__item" href="#portfolio">Portfolio</a>
-                <a class="menu__item" href="#nabidka">Nabídka</a>
-                <a class="menu__item" href="#omne">O mně</a>
+                <a class="menu__item" href="#kontakty">Kontakty</a>
                 <a class="menu__item" href="#nahledy">Náhledy závodů</a>
-                <a class="menu__item" href="#kontakty">Kontankty</a>
+                <a class="menu__item" href="#omne">O mně</a>
+                <a class="menu__item" href="#nabidka">Nabídka</a>
+                <a class="menu__item" href="#portfolio">Portfolio</a>
+                <a class="menu__item" href="#home">Domů</a>
             </nav>
         </div>
     </header>
@@ -39,29 +39,147 @@
 
     <section id="portfolio">
         <h3 class="section__title">Portfolio</h3>
-        <div class="flex">
-            <div class="flex__item">
-                <img src="" alt="">
+        
+        <div class="portfolio__category">
+            <div class="portfolio__category-header">
+                <h4>Psi</h4>
+                <button class="portfolio__toggle" onclick="toggleGallery(this)">▼</button>
             </div>
-            <div class="flex__item">
-                <img src="" alt="">
+            <div class="portfolio__preview flex">
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 1">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 2">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 3">
+                </div>
             </div>
-            <div class="flex__item">
-                <img src="" alt="">
-            </div>
-            <div class="flex__item">
-                <img src="" alt="">
-            </div>
-            <div class="flex__item">
-                <img src="" alt="">
-            </div>
-            <div class="flex__item">
-                <img src="" alt="">
+            <div class="portfolio__gallery flex" style="display: none;">
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 4">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 5">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 6">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 7">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 8">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 9">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 10">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 11">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Pes 12">
+                </div>
             </div>
         </div>
-        <button>Psi</button>
-        <button>Koně</button>
-        <button>Závody</button>
+
+        <div class="portfolio__category">
+            <div class="portfolio__category-header">
+                <h4>Koně</h4>
+                <button class="portfolio__toggle" onclick="toggleGallery(this)">▼</button>
+            </div>
+            <div class="portfolio__preview flex">
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 1">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 2">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 3">
+                </div>
+            </div>
+            <div class="portfolio__gallery flex" style="display: none;">
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 4">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 5">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 6">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 7">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 8">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 9">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 10">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 11">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Kůň 12">
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio__category">
+            <div class="portfolio__category-header">
+                <h4>Závody</h4>
+                <button class="portfolio__toggle" onclick="toggleGallery(this)">▼</button>
+            </div>
+            <div class="portfolio__preview flex">
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 1">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 2">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 3">
+                </div>
+            </div>
+            <div class="portfolio__gallery flex" style="display: none;">
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 4">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 5">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 6">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 7">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 8">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 9">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 10">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 11">
+                </div>
+                <div class="flex__item">
+                    <img src="assets/img/uvodka.webp" alt="Závod 12">
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="nabidka">
