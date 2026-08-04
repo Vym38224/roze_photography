@@ -25,6 +25,13 @@ header {
     height: 70px;
 }
 
+hgroup {
+    margin: 0; 
+    padding-top: 4vw;
+    padding-bottom: 2em;
+    text-align: center;
+}
+
 section {
     padding-top: 4vw;
     padding-bottom: 2em;
@@ -58,15 +65,14 @@ h1 {
     font-size: 6em;
     font-weight: 900;
     margin: 0;
-    color: white;
+    color: black;
 }
 
 .little_subtitle {
-    margin-top: -1.2em;
     font-weight: 700;
-    color: white;
+    color: black;
     padding-left: 0;
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 
 h2 {
