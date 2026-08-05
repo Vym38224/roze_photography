@@ -1,11 +1,22 @@
 body {
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    /* Use Montserrat as primary font, fall back to Roboto and generic sans-serif */
+    font-family: "Montserrat", "Roboto", sans-serif;
     line-height: 1.5;
     position: relative;
     overflow: hidden;
     overflow-y: auto;
 }
+
+/* Montserrat in CSS */
+.text-mont-300{font-family:"Montserrat",sans-serif;font-weight:300}
+.text-mont-400{font-family:"Montserrat",sans-serif;font-weight:400}
+.text-mont-700{font-family:"Montserrat",sans-serif;font-weight:700}
+.text-mont-900{font-family:"Montserrat",sans-serif;font-weight:900}
+
+/* Colors */
+.primary-text-color{color:#e9e9e9}
+
 
 .background__color--primary {
     background-color: white;
@@ -47,12 +58,12 @@ header, section{
 }
 
 #home {
-    background-image: url('assets/img/uvodka.webp');
+    background-image: url('assets/pictures/uvodka.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    min-height: 70vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -250,14 +261,13 @@ small {
 .menu {
     display: flex;
     flex-direction: row-reverse;
-    margin-top: 0.5em;
+    margin-top: 0.3em;
 }
 
 .menu__item {
     padding: 1em;
     text-decoration: none;
     font-weight: 700;
-    color: #ffffff;
 }
 
 .menu__item:first-child{padding-right: 0;}
@@ -265,6 +275,35 @@ small {
 .menu__item:hover {
     opacity: 70%
 }
+
+/* social icons */
+.social{
+    display:flex;
+    gap:18px;
+    align-items:center
+}
+
+.social__item{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none 
+}
+
+.social__item img{
+    width:20px;
+    height:20px;
+    border-radius:4px;
+    display:block;
+    object-fit:contain;
+    filter:brightness(0) invert(1);
+}
+.social__item:hover img,.social__item:focus img{opacity: 70%}
+
+header.flex{display:flex;align-items:center}
+.flex__item--left{display:flex;align-items:center}
+.flex__item--right{display:flex;align-items:center;justify-content:flex-end}
+
 
 figure {
     position: relative;
