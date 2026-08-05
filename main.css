@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    /* Use Montserrat as primary font, fall back to Roboto and generic sans-serif */
     font-family: "Montserrat", "Roboto", sans-serif;
     line-height: 1.5;
     position: relative;
@@ -9,14 +8,30 @@ body {
 }
 
 /* Montserrat in CSS */
-.text-mont-300{font-family:"Montserrat",sans-serif;font-weight:300}
-.text-mont-400{font-family:"Montserrat",sans-serif;font-weight:400}
-.text-mont-700{font-family:"Montserrat",sans-serif;font-weight:700}
-.text-mont-900{font-family:"Montserrat",sans-serif;font-weight:900}
+.text-mont-300 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300
+}
+
+.text-mont-400 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400
+}
+
+.text-mont-700 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700
+}
+
+.text-mont-900 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900
+}
 
 /* Colors */
-.primary-text-color{color:#e9e9e9}
-
+.primary-text-color {
+    color: #222222
+}
 
 .background__color--primary {
     background-color: white;
@@ -37,7 +52,7 @@ header {
 }
 
 hgroup {
-    margin: 0; 
+    margin: 0;
     padding-top: 4vw;
     padding-bottom: 2em;
     text-align: center;
@@ -48,10 +63,13 @@ section {
     padding-bottom: 2em;
 }
 
-header, section{
-    padding-left: 14em;
-    padding-right: 14em;
+header,
+section {
+    padding-left: 10em;
+    padding-right: 10em;
+    box-sizing: border-box;
 }
+
 #home {
     padding-left: 0;
     padding-right: 0;
@@ -63,26 +81,20 @@ header, section{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 0;
+    min-height: 80vh;
 }
 
-h1 {
+
+hgroup h1 {
     font-size: 6em;
     font-weight: 900;
-    margin: 0;
-    color: black;
+    margin-top: 170px;
+    margin-bottom: 0;
 }
 
-.little_subtitle {
+hgroup p {
+    margin-top: -30px;
     font-weight: 700;
-    color: black;
-    padding-left: 0;
     font-size: 1.8em;
 }
 
@@ -100,13 +112,6 @@ h3 h4 {
     color: #0b0b15;
 }
 
-p,
-span,
-small {
-    font-weight: 400;
-    color: #555555;
-    margin-bottom: 0em;
-}
 
 .introduction {
     margin-bottom: -1em;
@@ -131,9 +136,12 @@ small {
     display: flex
 }
 
-.flex__item--left,
-.flex__item--right {
+.flex__item--left {
     flex: 1;
+}
+
+.flex__item--right {
+    flex: 2;
 }
 
 .flex__item {
@@ -265,44 +273,63 @@ small {
 }
 
 .menu__item {
-    padding: 1em;
+    padding: 1em 0.75em;
     text-decoration: none;
     font-weight: 700;
+    white-space: nowrap;
 }
 
-.menu__item:first-child{padding-right: 0;}
+.menu__item:first-child {
+    padding-right: 0;
+}
 
 .menu__item:hover {
     opacity: 70%
 }
 
 /* social icons */
-.social{
-    display:flex;
-    gap:18px;
-    align-items:center
+.social {
+    display: flex;
+    gap: 18px;
+    align-items: center
 }
 
-.social__item{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none 
+.social__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none
 }
 
-.social__item img{
-    width:20px;
-    height:20px;
-    border-radius:4px;
-    display:block;
-    object-fit:contain;
-    filter:brightness(0) invert(1);
+.social__item img {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
-.social__item:hover img,.social__item:focus img{opacity: 70%}
 
-header.flex{display:flex;align-items:center}
-.flex__item--left{display:flex;align-items:center}
-.flex__item--right{display:flex;align-items:center;justify-content:flex-end}
+.social__item:hover img,
+.social__item:focus img {
+    opacity: 70%
+}
+
+header.flex {
+    display: flex;
+    align-items: center
+}
+
+.flex__item--left {
+    display: flex;
+    align-items: center
+}
+
+.flex__item--right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end
+}
 
 
 figure {
@@ -548,11 +575,10 @@ footer div {
 /* responzivní */
 @media (max-width:1200px) {
 
-    section,
-    header,
-    footer {
-        margin-left: 4vw;
-        margin-right: 4vw;
+
+    header {
+        margin-left: 0;
+        margin-right: 0;
     }
 
     h1::after {
@@ -570,6 +596,7 @@ footer div {
     figcaption figure {
         margin-left: 1em;
     }
+
     .flex__item--left {
         flex: 1.35
     }
