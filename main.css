@@ -7,6 +7,10 @@ body {
     overflow-y: auto;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 /* Montserrat in CSS */
 .text-mont-300 {
     font-family: "Montserrat", sans-serif;
@@ -86,14 +90,14 @@ section {
 
 
 hgroup h1 {
-    font-size: 6em;
+    font-size: 8em;
     font-weight: 900;
-    margin-top: 170px;
+    margin-top: 250px;
     margin-bottom: 0;
 }
 
 hgroup p {
-    margin-top: -30px;
+    margin-top: -40px;
     font-weight: 700;
     font-size: 1.8em;
 }
@@ -131,6 +135,50 @@ h3 h4 {
     margin-top: -1em;
 }
 
+#portfolio{
+    background-color:#eaf1ff
+}
+
+#nabidka{
+    background-color:#fffcf9;
+    position: relative;
+    z-index: 2;
+}
+
+.portfolio-divider {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 50vh;
+    min-height: 50vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #0b0b15;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: 0;
+}
+
+.portfolio-divider__image {
+    display: none;
+}
+
+@media (max-width: 960px) {
+    .portfolio-divider {
+        height: 40vh;
+        min-height: 40vh;
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 560px) {
+    .portfolio-divider {
+        height: 33vh;
+        min-height: 33vh;
+    }
+}
 /* flex */
 .flex {
     display: flex
@@ -497,6 +545,26 @@ footer div {
     flex-direction: row;
 }
 
+.nabidka__cards {
+    gap: 1em;
+    align-items: stretch;
+    margin-top: 1.5em;
+}
+
+.package {
+    flex: 1;
+    min-height: 10rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    border: 1px solid #d8d8d8;
+    border-radius: 0.9rem;
+    background: #ffffff;
+}
+
+.package h4 {
+    margin: 0;
+}
+
 .button--up {
     display: none;
     position: fixed;
@@ -509,6 +577,108 @@ footer div {
     cursor: pointer;
     padding: 1em;
     font-family: "Roboto", sans-serif;
+}
+
+.photo-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(8, 8, 12, 0.92);
+    padding: 2rem;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-lightbox.open {
+    display: flex;
+}
+
+.photo-lightbox__content {
+    margin: 0;
+    max-width: 96vw;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.photo-lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 2.4rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.photo-lightbox__nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.photo-lightbox__nav--prev {
+    left: 1rem;
+}
+
+.photo-lightbox__nav--next {
+    right: 1rem;
+}
+
+.photo-lightbox__image {
+    display: block;
+    max-width: 96vw;
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    border-radius: 0.75rem;
+}
+
+.photo-lightbox__caption {
+    color: #f5f5f7;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.photo-lightbox__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.photo-lightbox__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#portfolio img,
+#omne img {
+    cursor: pointer;
 }
 
 /* portfolio */
@@ -545,31 +715,66 @@ footer div {
 
 .portfolio__preview {
     margin-bottom: 1em;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1em;
 }
 
 .portfolio__gallery {
-    flex-wrap: wrap;
+    margin-bottom: 0.5em;
+}
+
+.portfolio__gallery.flex {
+    display: block;
+    column-count: 3;
+    column-gap: 1em;
 }
 
 .portfolio__preview .flex__item,
 .portfolio__gallery .flex__item {
-    flex: 0 0 calc(33.333% - 0.67em);
-    margin-right: 1em;
-    margin-bottom: 1em;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 1em;
+    flex: none;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    overflow: hidden;
 }
 
-.portfolio__preview .flex__item:nth-child(3n),
-.portfolio__gallery .flex__item:nth-child(3n) {
-    margin-right: 0;
+.portfolio__preview .flex__item {
+    margin: 0;
 }
 
 .portfolio__preview .flex__item img,
 .portfolio__gallery .flex__item img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    height: auto;
     display: block;
+}
+
+@media (max-width: 560px) {
+    .photo-lightbox {
+        padding: 1rem;
+    }
+
+    .photo-lightbox__nav {
+        width: 2.8rem;
+        height: 2.8rem;
+        font-size: 2rem;
+    }
+
+    .photo-lightbox__nav--prev {
+        left: 0.5rem;
+    }
+
+    .photo-lightbox__nav--next {
+        right: 0.5rem;
+    }
+
+    .photo-lightbox__close {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
 }
 
 /* responzivní */
@@ -617,6 +822,18 @@ footer div {
 
     .flex {
         flex-direction: column;
+    }
+
+    .nabidka__cards {
+        flex-direction: column;
+    }
+
+    .portfolio__gallery.flex {
+        column-count: 2;
+    }
+
+    .portfolio__preview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .flex_row {
@@ -704,6 +921,14 @@ footer div {
 @media (max-width: 560px) {
     button {
         margin-bottom: 1em;
+    }
+
+    .portfolio__preview {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio__gallery.flex {
+        column-count: 1;
     }
 
     .flex__item--left .about-me {
