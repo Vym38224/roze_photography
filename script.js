@@ -26,6 +26,23 @@ function updateHeaderTransparency() {
 updateHeaderTransparency();
 window.addEventListener('scroll', updateHeaderTransparency, { passive: true });
 
+const animatedElements = document.querySelectorAll('.section__title, .faq__item, .contact-form-panel, .package:not(.package--middle)');
+
+if ('IntersectionObserver' in window) {
+    const animatedElementsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    animatedElements.forEach((element) => animatedElementsObserver.observe(element));
+}
+
 const lightbox = document.querySelector('.photo-lightbox');
 const lightboxImage = document.querySelector('.photo-lightbox__image');
 const lightboxCaption = document.querySelector('.photo-lightbox__caption');

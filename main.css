@@ -68,8 +68,8 @@ hgroup {
 }
 
 section {
-    padding-top: 4vw;
-    padding-bottom: 2em;
+    padding-top: 7em;
+    padding-bottom: 5em;
 }
 
 header,
@@ -95,8 +95,7 @@ section {
 
 
 hgroup h1 {
-    font-size: 8em;
-    font-weight: 900;
+    font-size: 7em;
     margin-top: 450px;
     margin-bottom: 0;
     animation: hero-title-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
@@ -127,6 +126,15 @@ hgroup p {
     hgroup {
         animation: none;
     }
+
+    .section__title,
+    .faq__item,
+    .contact-form-panel,
+    .package {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
 }
 
 h2 {
@@ -150,9 +158,20 @@ h3 h4 {
 
 .section__title {
     width: fit-content;
+    display: block;
+    margin: 0 auto 1.2rem;
+    text-align: center;
     z-index: 1;
     position: relative;
-    font-size: 30px;
+    font-size: 40px;
+    opacity: 0;
+    transform: translateY(2.5rem);
+    will-change: transform, opacity;
+    padding-bottom: 1em;
+}
+
+.section__title.is-visible {
+    animation: hero-title-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
 }
 
 .subtitle {
@@ -175,7 +194,6 @@ h3 h4 {
 .faq {
     display: grid;
     gap: 1rem;
-    margin-top: 1.5rem;
 }
 
 .faq__item {
@@ -184,6 +202,13 @@ h3 h4 {
     background: #ffffff;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(11, 11, 21, 0.04);
+    opacity: 0;
+    transform: translateY(2.5rem);
+    will-change: transform, opacity;
+}
+
+.faq__item.is-visible {
+    animation: hero-title-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
 }
 
 .faq__question {
@@ -217,6 +242,112 @@ h3 h4 {
 .faq__answer {
     padding: 0 1.25rem 1.25rem;
     color: #4d4d53;
+}
+
+.nabidka__cards {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-left: 18em;
+    margin-right: 18em;
+    padding-top: 2em;
+}
+
+.package {
+    min-height: 280px;
+    padding: 2rem 1.5rem;
+    background: #fff;
+    border: 1px solid #e3d9c8;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.package--middle {
+    flex: 1.2;
+    z-index: 1;
+}
+
+.package--left,
+.package--right {
+    flex: 0.9;
+    max-height: 530px;
+    max-width: 310px;
+    transform: translateX(0);
+    margin-top: 3.5em;
+}
+
+.package.is-visible {
+    animation: package-card-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes package-card-rise {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.package--left.is-visible {
+    animation: package-card-left 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.package--right.is-visible {
+    animation: package-card-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes package-card-left {
+    from {
+        opacity: 0;
+        transform: translateX(-8em);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes package-card-right {
+    from {
+        opacity: 0;
+        transform: translateX(8em);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.contact-form-panel {
+    opacity: 0;
+    transform: translateX(4rem);
+    will-change: transform, opacity;
+}
+
+.contact-form-panel.is-visible {
+    animation: contact-form-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+@keyframes contact-form-rise {
+    from {
+        opacity: 0;
+        transform: translateX(4rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .portfolio-divider {
@@ -324,12 +455,9 @@ h3 h4 {
     box-sizing: border-box;
 }
 
-.flex__half--left {
-    padding-top: 2.5vw;
-}
-
 .flex__touch {
     flex-direction: column;
+    font-size: 18px;
 }
 
 .flex__touch--item {
@@ -352,6 +480,7 @@ h3 h4 {
     text-decoration: none;
     color: black;
     padding-left: 1em;
+    padding-top: 1em;
 }
 
 .flex__touch--item img {
