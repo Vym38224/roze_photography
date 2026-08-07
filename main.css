@@ -135,11 +135,11 @@ h3 h4 {
     margin-top: -1em;
 }
 
-#portfolio{
-    background-color:#eaf1ff
+#portfolio, #o_mne{
+    background-color:#edf2fc
 }
 
-#nabidka{
+#nabidka, #kontatky{
     background-color:#fffcf9;
     position: relative;
     z-index: 2;
@@ -523,21 +523,20 @@ button {
 
 footer {
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    background-color: #f0f0f0;   
 }
 
 .tf {
-    flex-direction: row;
-    gap: 0.5em;
-    text-align: left;
+    text-align: center;
 }
 
 footer div {
     flex-direction: row;
-    flex: 2;
-    text-align: right;
+    text-align: center;
     margin: auto;
 }
 
@@ -553,7 +552,7 @@ footer div {
 
 .package {
     flex: 1;
-    min-height: 10rem;
+    height: 40em;
     padding: 1.25rem;
     box-sizing: border-box;
     border: 1px solid #d8d8d8;
