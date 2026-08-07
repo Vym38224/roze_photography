@@ -12,6 +12,20 @@ function toggleGallery(button) {
     }
 }
 
+const siteHeader = document.querySelector('header');
+const headerScrollThreshold = 20;
+
+function updateHeaderTransparency() {
+    if (!siteHeader) {
+        return;
+    }
+
+    siteHeader.classList.toggle('header--scrolled', window.scrollY > headerScrollThreshold);
+}
+
+updateHeaderTransparency();
+window.addEventListener('scroll', updateHeaderTransparency, { passive: true });
+
 const lightbox = document.querySelector('.photo-lightbox');
 const lightboxImage = document.querySelector('.photo-lightbox__image');
 const lightboxCaption = document.querySelector('.photo-lightbox__caption');

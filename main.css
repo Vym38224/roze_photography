@@ -50,9 +50,14 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(54, 54, 54, 0.39);
+    background-color: rgba(255, 255, 255, 0);
     z-index: 1000;
     height: 70px;
+    transition: background-color 0.25s ease;
+}
+
+header.header--scrolled {
+    background-color: rgba(253, 253, 253, 0.9);
 }
 
 hgroup {
@@ -92,14 +97,36 @@ section {
 hgroup h1 {
     font-size: 8em;
     font-weight: 900;
-    margin-top: 250px;
+    margin-top: 450px;
     margin-bottom: 0;
+    animation: hero-title-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+    will-change: transform, opacity;
 }
 
 hgroup p {
     margin-top: -40px;
     font-weight: 700;
     font-size: 1.8em;
+    animation: hero-title-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+    will-change: transform, opacity;
+}
+
+@keyframes hero-title-rise {
+    from {
+        opacity: 0;
+        transform: translateY(2.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    hgroup {
+        animation: none;
+    }
 }
 
 h2 {
@@ -135,14 +162,61 @@ h3 h4 {
     margin-top: -1em;
 }
 
-#portfolio, #o_mne{
+#portfolio, #o_mne, #kontakty{
     background-color:#edf2fc
 }
 
-#nabidka, #kontatky{
-    background-color:#fffcf9;
+#nabidka, #otazky{
+    background-color:#faf0e5;
     position: relative;
     z-index: 2;
+}
+
+.faq {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.faq__item {
+    border: 1px solid #d8d8d8;
+    border-radius: 0.9rem;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(11, 11, 21, 0.04);
+}
+
+.faq__question {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.1rem 1.25rem;
+    font-weight: 500;
+    color: #293c5a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.faq__question::-webkit-details-marker {
+    display: none;
+}
+
+.faq__question::after {
+    content: '+';
+    flex: 0 0 auto;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: #39557e;
+}
+
+.faq__item[open] .faq__question::after {
+    content: '−';
+}
+
+.faq__answer {
+    padding: 0 1.25rem 1.25rem;
+    color: #4d4d53;
 }
 
 .portfolio-divider {
@@ -275,7 +349,6 @@ h3 h4 {
 }
 
 .flex__touch--right {
-    font-weight: bold;
     text-decoration: none;
     color: black;
     padding-left: 1em;
@@ -355,7 +428,6 @@ h3 h4 {
     border-radius: 4px;
     display: block;
     object-fit: contain;
-    filter: brightness(0) invert(1);
 }
 
 .social__item:hover img,
@@ -525,8 +597,8 @@ footer {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding-top: 5em;
-    padding-bottom: 5em;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
     background-color: #f0f0f0;   
 }
 
