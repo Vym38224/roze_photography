@@ -2,7 +2,7 @@ function toggleGallery(button) {
     const header = button.parentElement;
     const category = header.parentElement;
     const gallery = category.querySelector('.portfolio__gallery');
-    
+
     if (gallery.style.display === 'none') {
         gallery.style.display = 'block';
         button.classList.add('open');
@@ -26,7 +26,7 @@ function updateHeaderTransparency() {
 updateHeaderTransparency();
 window.addEventListener('scroll', updateHeaderTransparency, { passive: true });
 
-const animatedElements = document.querySelectorAll('.section__title, .faq__item, .contact-form-panel, .package:not(.package--middle)');
+const animatedElements = document.querySelectorAll('.section__title, .faq__item, .contact-form-panel, .package:not(.package--middle), .o_mne, .portfolio__selection .portfolio__item');
 
 if ('IntersectionObserver' in window) {
     const animatedElementsObserver = new IntersectionObserver((entries, observer) => {
@@ -37,10 +37,33 @@ if ('IntersectionObserver' in window) {
             }
         });
     }, {
-        threshold: 0.3
+        threshold: 0.25
     });
 
     animatedElements.forEach((element) => animatedElementsObserver.observe(element));
+}
+
+const filterButtons = document.querySelectorAll('.portfolio-filter button');
+const portfolioItems = document.querySelectorAll('.portfolio-gallery-grid .portfolio__item');
+
+function applyPortfolioFilter(filter) {
+    portfolioItems.forEach((item) => {
+        const category = item.dataset.category;
+        item.style.display = filter === 'all' || category === filter ? '' : 'none';
+    });
+}
+
+if (filterButtons.length && portfolioItems.length) {
+    filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+            filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+            applyPortfolioFilter(filter);
+        });
+    });
+
+    filterButtons[0].classList.add('active');
+    applyPortfolioFilter('all');
 }
 
 const lightbox = document.querySelector('.photo-lightbox');
@@ -49,7 +72,7 @@ const lightboxCaption = document.querySelector('.photo-lightbox__caption');
 const lightboxCloseButton = document.querySelector('.photo-lightbox__close');
 const lightboxPrevButton = document.querySelector('.photo-lightbox__nav--prev');
 const lightboxNextButton = document.querySelector('.photo-lightbox__nav--next');
-const zoomableImages = Array.from(document.querySelectorAll('#portfolio img, #omne img'));
+const zoomableImages = Array.from(document.querySelectorAll('#portfolio img, #portfolio-page img, #omne img, .portfolio__item img'));
 let currentLightboxIndex = -1;
 
 function openLightboxAt(index) {
