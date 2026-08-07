@@ -156,9 +156,27 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+const scrollToTopButton = document.querySelector('.scroll-to-top');
+
+function toggleScrollToTopButton() {
+    if (!scrollToTopButton) {
+        return;
+    }
+
+    const shouldShow = window.scrollY > 400;
+    scrollToTopButton.classList.toggle('is-visible', shouldShow);
+}
+
 function scrollUp() {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
+}
+
+toggleScrollToTopButton();
+window.addEventListener('scroll', toggleScrollToTopButton, { passive: true });
+
+if (scrollToTopButton) {
+    scrollToTopButton.addEventListener('click', scrollUp);
 }

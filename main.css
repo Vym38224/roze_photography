@@ -805,19 +805,6 @@ footer div {
     margin: 0;
 }
 
-.button--up {
-    display: none;
-    position: fixed;
-    bottom: 2vw;
-    right: 2vw;
-    z-index: 5;
-    border: none;
-    background: black;
-    color: white;
-    cursor: pointer;
-    padding: 1em;
-    font-family: "Roboto", sans-serif;
-}
 
 .photo-lightbox {
     display: none;
@@ -849,13 +836,13 @@ footer div {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3.3rem;
+    height: 3rem;
     border: 0;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
-    font-size: 2.4rem;
+    font-size: 1.4rem;
     line-height: 1;
     display: flex;
     align-items: center;
@@ -903,7 +890,7 @@ footer div {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 1.4rem;
     line-height: 1;
     display: flex;
     align-items: center;
@@ -1005,7 +992,8 @@ footer div {
     column-gap: 1em;
 }
 
-.portfolio__selection .portfolio__item {
+.portfolio__selection .portfolio__item,
+.portfolio-gallery-grid .portfolio__item {
     display: inline-block;
     width: 100%;
     margin: 0 0 1em;
@@ -1015,26 +1003,6 @@ footer div {
     box-shadow: 0 10px 20px rgba(11, 11, 21, 0.06);
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
-}
-
-.portfolio__selection .portfolio__item:nth-child(1),
-.portfolio__selection .portfolio__item:nth-child(3),
-.portfolio__selection .portfolio__item:nth-child(5) {
-    opacity: 0;
-    transform: translateY(0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.portfolio__selection .portfolio__item:nth-child(2),
-.portfolio__selection .portfolio__item:nth-child(4),
-.portfolio__selection .portfolio__item:nth-child(6) {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.portfolio__selection .portfolio__item.is-visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .portfolio__item img {
@@ -1085,6 +1053,43 @@ footer div {
     background: var(--bg-color-tertiary);
     color: #ffffff;
     border-color: var(--bg-color-tertiary);
+}
+
+.scroll-to-top {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 20px;
+    background: var(--bg-color-tertiary);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(11, 11, 21, 0.15);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.75rem);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 1100;
+}
+
+.scroll-to-top:hover {
+    background: #254a71;
+}
+
+.scroll-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top__icon {
+    font-size: 1.35rem;
+    line-height: 1;
 }
 
 @media (max-width: 820px) {
