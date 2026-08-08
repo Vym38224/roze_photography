@@ -75,6 +75,41 @@ const lightboxNextButton = document.querySelector('.photo-lightbox__nav--next');
 const zoomableImages = Array.from(document.querySelectorAll('#portfolio img, #portfolio-page img, #omne img, .portfolio__item img'));
 let currentLightboxIndex = -1;
 
+// Masonry-like grid packing while preserving DOM (row-major) order.
+function updateMasonryGrid(gridSelector, itemSelector) {
+    const grids = document.querySelectorAll(gridSelector);
+    grids.forEach((grid) => {
+        const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows')) || 8;
+        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap')) || 0;
+        const items = grid.querySelectorAll(itemSelector);
+        items.forEach((item) => {
+            const img = item.querySelector('img');
+            if (!img) return;
+            const height = img.getBoundingClientRect().height;
+            const rowSpan = Math.max(1, Math.ceil((height + rowGap) / (rowHeight + rowGap)));
+            item.style.gridRowEnd = 'span ' + rowSpan;
+        });
+    });
+}
+
+function debounce(fn, ms) {
+    let t;
+    return function (...args) {
+        clearTimeout(t);
+        t = setTimeout(() => fn.apply(this, args), ms);
+    };
+}
+
+const runMasonry = () => updateMasonryGrid('.portfolio__selection, .portfolio-gallery-grid, .portfolio__gallery.flex', '.portfolio__item');
+
+window.addEventListener('load', () => {
+    runMasonry();
+    // Also update after a short delay to account for late-loading images
+    setTimeout(runMasonry, 500);
+});
+
+window.addEventListener('resize', debounce(runMasonry, 150));
+
 function openLightboxAt(index) {
     const image = zoomableImages[index];
 

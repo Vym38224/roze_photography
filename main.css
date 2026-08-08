@@ -93,8 +93,8 @@ section {
 
 header,
 section {
-    padding-left: 10em;
-    padding-right: 10em;
+    padding-left: 14em;
+    padding-right: 14em;
     box-sizing: border-box;
 }
 
@@ -112,8 +112,18 @@ section {
     height: 80vh;
 }
 
+.portfolio {
+    background-image: url('assets/pictures/uvodka_portfolio.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    height: 60vh;
+}
+
 
 hgroup h1 {
+    font-weight: 600;
     font-size: 7em;
     margin-top: 3em;
     margin-bottom: 0;
@@ -121,9 +131,18 @@ hgroup h1 {
     will-change: transform, opacity;
 }
 
+hgroup h2 {
+    font-weight: 600;
+    color: var(--text-color-primary);
+    font-size: 2.9em;
+    margin-top: 6.5em;
+    animation: hero-title-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+    will-change: transform, opacity;
+}
+
 hgroup p {
     margin-top: -40px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.8em;
     animation: hero-title-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
     will-change: transform, opacity;
@@ -156,7 +175,7 @@ hgroup p {
 }
 
 h2 {
-    font-weight: 900;
+    font-weight: 600;
     color: var(--text-color-primary);
     font-size: 1.75em;
     margin-top: 0.5em;
@@ -165,8 +184,7 @@ h2 {
 }
 
 h3 h4 {
-    font-weight: 900;
-    color: #0b0b15;
+    font-weight: 600;
 }
 
 
@@ -182,6 +200,7 @@ h3 h4 {
     z-index: 1;
     position: relative;
     font-size: 40px;
+    font-weight: 600;
     opacity: 0;
     transform: translateY(2.5rem);
     will-change: transform, opacity;
@@ -193,7 +212,7 @@ h3 h4 {
 }
 
 .subtitle {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 2em;
     color: var(--text-color-secondary);
     margin-top: -1em;
@@ -475,12 +494,18 @@ h3 h4 {
 }
 
 .flex__touch {
+    display: flex;
     flex-direction: column;
     font-size: 18px;
 }
 
 .flex__touch--item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
     padding-top: 0.6em;
+    width: auto;
+    max-width: min-content;
 }
 
 .flex__touch--item-marker {
@@ -497,12 +522,11 @@ h3 h4 {
 
 .flex__touch--right {
     text-decoration: none;
-    color: black;
-    padding-left: 1em;
-    padding-top: 1em;
+    color: var(--text-color-secondary);
+    padding-left: -0.5em;
 }
 
-.flex__touch--item img {
+s .flex__touch--item img {
     display: inline-block;
     vertical-align: middle;
 }
@@ -553,7 +577,7 @@ h3 h4 {
 .menu__item {
     padding: 1em 0.75em;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
     white-space: nowrap;
 }
 
@@ -658,7 +682,7 @@ figcaption {
 }
 
 .mark {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 0.9em;
     color: white;
     padding: 0.4em;
@@ -952,16 +976,16 @@ footer div {
 }
 
 .portfolio__gallery.flex {
-    display: block;
-    column-count: 3;
-    column-gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
 }
 
 .portfolio__preview .flex__item,
 .portfolio__gallery .flex__item {
     display: inline-block;
     width: 100%;
-    margin: 0 0 1em;
+    margin: 0;
     flex: none;
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
@@ -988,13 +1012,16 @@ footer div {
 
 .portfolio__selection,
 .portfolio-gallery-grid {
-    column-count: 3;
-    column-gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1em;
+    row-gap: 0;
+    grid-auto-rows: 4px;
 }
 
 .portfolio__selection .portfolio__item,
 .portfolio-gallery-grid .portfolio__item {
-    display: inline-block;
+    display: block;
     width: 100%;
     margin: 0 0 1em;
     overflow: hidden;
@@ -1023,7 +1050,7 @@ footer div {
     color: #fff;
     border-radius: 20px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
     transition: background 0.2s ease;
 }
 
@@ -1060,7 +1087,7 @@ footer div {
     right: 1.5rem;
     bottom: 1.5rem;
     width: 3rem;
-    height: 3rem;
+    height: 2.8rem;
     border: none;
     border-radius: 20px;
     background: var(--bg-color-tertiary);
@@ -1096,7 +1123,7 @@ footer div {
 
     .portfolio__selection,
     .portfolio-gallery-grid {
-        column-count: 2;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -1220,7 +1247,7 @@ footer div {
         }
 
         .portfolio__gallery.flex {
-            column-count: 2;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .portfolio__preview {
@@ -1319,7 +1346,7 @@ footer div {
         }
 
         .portfolio__gallery.flex {
-            column-count: 1;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
         }
 
         .flex__item--left .about-me {
