@@ -26,7 +26,7 @@ function updateHeaderTransparency() {
 updateHeaderTransparency();
 window.addEventListener('scroll', updateHeaderTransparency, { passive: true });
 
-const animatedElements = document.querySelectorAll('.section__title, .faq__item, .contact-form-panel, .package:not(.package--middle), .o_mne, .portfolio__selection .portfolio__item');
+const animatedElements = document.querySelectorAll('.section__title, .faq__description, .faq__item, .contact-form-panel, .package:not(.package--middle), .o_mne, .portfolio__selection .portfolio__item');
 
 if ('IntersectionObserver' in window) {
     const animatedElementsObserver = new IntersectionObserver((entries, observer) => {

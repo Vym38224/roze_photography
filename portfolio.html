@@ -8,15 +8,27 @@
     <link rel="stylesheet" href="assets/icons/ionicons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/ynd8vkt.css">
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
 
-    <header class="flex text-mont-300">
+    <header class="flex text-mont-400">
         <div class="flex__item--left">
+            <h1><a href="main.html#home" style="text-decoration:none" class="primary-text-color">Roze|Photography</a>
+            </h1>
+        </div>
+        <div class="flex__item--right">
+            <nav class="menu">
+                <a class="menu__item primary-text-color" href="main.html#kontakty">Kontakty</a>
+                <a class="menu__item primary-text-color" href="https://eu.zonerama.com/rozeraw/1661836"
+                    target="_blank">Náhledy</a>
+                <a class="menu__item primary-text-color" href="main.html#o_mne">O mně</a>
+                <a class="menu__item primary-text-color" href="main.html#nabidka">Nabídka</a>
+                <a class="menu__item primary-text-color" href="portfolio.html">Portfolio</a>
+            </nav>
             <nav class="social">
                 <a class="social__item primary-text-color" href="https://www.facebook.com/roze.raw" target="_blank">
                     <img src="assets/icons/brands/facebook.svg" alt="Facebook"
@@ -31,24 +43,15 @@
                 </a>
             </nav>
         </div>
-        <div class="flex__item--right">
-            <nav class="menu">
-                <a class="menu__item primary-text-color" href="main.html#kontakty">Kontakty</a>
-                <a class="menu__item primary-text-color" href="https://eu.zonerama.com/rozeraw/1661836">Náhledy
-                    závodů</a>
-                <a class="menu__item primary-text-color" href="main.html#o_mne">O mně</a>
-                <a class="menu__item primary-text-color" href="main.html#nabidka">Nabídka</a>
-                <a class="menu__item primary-text-color" href="portfolio.html">Portfolio</a>
-                <a class="menu__item primary-text-color" href="main.html#home">Domů</a>
-            </nav>
-        </div>
     </header>
 
-    <hgroup class="primary-text-color portfolio">
-        <h2>Portfolio</h2>
-    </hgroup>
+    <div class="portfolio">
+
+    </div>
 
     <section id="portfolio">
+
+        <h2 class="section__title">Portfolio</h2>
 
         <div class="portfolio-filter">
             <button type="button" data-filter="all">Vše</button>
@@ -199,12 +202,12 @@
 
     <section>
         <h2 class="section__title">Chceš i ty takové fotky?</h2>
-        <div style="margin-top:-1.5em;" class="portfolio__more-link">
+        <div style="margin-top:-1.5em;" class="portfolio__more-link portfolio__more-link--no-arrow">
             <a class="background__color--tertiary" href="main.html#kontakty">Napiš mi</a>
         </div>
     </section>
 
-    <footer>
+    <footer class="text-mont-400">
         <div><small>© 2024 Roze. Všechna práva vyhrazena. <a class="secondary-text-color"
                     href="obchodni-podminky.html">Obchodní
                     podmínky</a></small></div>

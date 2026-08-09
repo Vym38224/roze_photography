@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/icons/ionicons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/ynd8vkt.css">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -17,6 +17,17 @@
 
     <header class="flex text-mont-300">
         <div class="flex__item--left">
+            <h1><a href="#home" style="text-decoration:none" class="primary-text-color">Roze|Photography</a></h1>
+        </div>
+        <div class="flex__item--right">
+            <nav class="menu">
+                <a class="menu__item primary-text-color" href="#kontakty">Kontakty</a>
+                <a class="menu__item primary-text-color" href="https://eu.zonerama.com/rozeraw/1661836"
+                    target="_blank">Náhledy</a>
+                <a class="menu__item primary-text-color" href="#o_mne">O mně</a>
+                <a class="menu__item primary-text-color" href="#nabidka">Nabídka</a>
+                <a class="menu__item primary-text-color" href="portfolio.html">Portfolio</a>
+            </nav>
             <nav class="social">
                 <a class="social__item primary-text-color" href="https://www.facebook.com/roze.raw" target="_blank">
                     <img src="assets/icons/brands/facebook.svg" alt="Facebook"
@@ -31,26 +42,14 @@
                 </a>
             </nav>
         </div>
-        <div class="flex__item--right">
-            <nav class="menu">
-                <a class="menu__item primary-text-color" href="#kontakty">Kontakty</a>
-                <a class="menu__item primary-text-color" href="https://eu.zonerama.com/rozeraw/1661836">Náhledy
-                    závodů</a>
-                <a class="menu__item primary-text-color" href="#o_mne">O mně</a>
-                <a class="menu__item primary-text-color" href="#nabidka">Nabídka</a>
-                <a class="menu__item primary-text-color" href="portfolio.html">Portfolio</a>
-                <a class="menu__item primary-text-color" href="#home">Domů</a>
-            </nav>
-        </div>
     </header>
 
-    <hgroup id="home" class="primary-text-color">
-        <h1>Roze</h1>
-        <p>fotografka</p>
-    </hgroup>
+    <div id="home" class="primary-text-color">
+    </div>
 
 
     <section id="portfolio">
+        <h2 class="section__title">Má tvorba</h2>
         <div class="portfolio__selection">
             <div class="portfolio__item">
                 <img src="assets/pictures/portfolio/portfolio5.webp" alt="Bella">
@@ -72,36 +71,92 @@
             </div>
         </div>
         <div class="portfolio__more-link">
-            <a class="background__color--tertiary" href="portfolio.html">Více</a>
+            <a class="background__color--tertiary" href="portfolio.html">Více </a>
         </div>
     </section>
 
     <section class="portfolio-divider" aria-label="Vybraná fotografie"
-        style="background-image: url('assets/pictures/uvodka2.webp');">
+        style="background-image: url('assets/pictures/uvodka.webp');">
     </section>
 
     <section id="nabidka">
-        <h3 class="section__title">Nabídka</h3>
-        <p style="margin-top: -3em;">Objednáním se na focení stvrzujete, že jste seznámeni s <a
-                class="secondary-text-color" href="obchodni-podminky.html">obchodními podmínkami</a> a berete na
-            vědomí styl mé práce.</p>
+        <h3 class="section__title secondary-text-color">Nabídka</h3>
+
         <div class="nabidka__cards flex flex_row">
             <div class="package package--left">
-                <h4>Balíček 1</h4>
+                <div class="package__content">
+                    <h4 class="secondary-text-color">Mini</h4>
+                    <div class="package__features primary-text-color text-mont-400 ">
+                        <p>4 upravených fotografií ve Fine Art stylu</p>
+                        <p>Váš výběr z náhledů</p>
+                        <p>fotografie pro osobní použití</p>
+                        <p>cca 45 minut focení</p>
+                    </div>
+                    <div class="package__price secondary-text-color">1 400 Kč</div>
+                </div>
             </div>
-            <div class="package">
-                <h4>Balíček 2</h4>
+            <div class="package package--middle">
+                <div class="package__content">
+                    <h4 class="secondary-text-color">Standart</h4>
+                    <span>Oblíbené</span>
+                    <div class="package__features primary-text-color package__features--middle text-mont-400 ">
+                        <p>8 upravených fotografií ve Fine Art stylu</p>
+                        <p>Váš výběr z náhledů</p>
+                        <p>fotografie pro osobní použití</p>
+                        <p>cca 1 hodina focení</p>
+                    </div>
+                    <div class="package__price package__price--middle secondary-text-color">2 500 Kč</div>
+                </div>
             </div>
             <div class="package package--right">
-                <h4>Balíček 3</h4>
+                <div class="package__content">
+                    <h4 class="secondary-text-color">Maxi</h4>
+                    <div class="package__features primary-text-color text-mont-400 ">
+                        <p>12 upravených fotografií ve Fine Art stylu</p>
+                        <p>Váš výběr z náhledů</p>
+                        <p>fotografie pro osobní použití</p>
+                        <p>cca 1,5 hodiny focení</p>
+                    </div>
+                    <div class="package__price secondary-text-color">3 300 Kč</div>
+                </div>
             </div>
         </div>
+
+        <p class="text-mont-400 faq__description"
+            style="padding-top:3em; padding-bottom: 2em; text-align: center; font-size:15px">
+            Objednáním se na focení
+            stvrzujete,
+            že jste
+            seznámeni s <a class="secondary-text-color" href="obchodni-podminky.html">obchodními podmínkami</a> a berete
+            na
+            vědomí styl mé práce.</p>
+
+        <div class="faq__item" style="margin-bottom: 1em;">
+            <summary style="font-size:15px" class="faq__question text-mont-400">Má doprava na místo focení není zahrnuta
+                v ceně balíčku
+            </summary>
+        </div>
+
+        <details class="faq__item" style="margin-bottom: 1em;">
+            <summary style="font-size:15px" class="faq__question text-mont-400">Všechny fotografie obdržíte ve dvou
+                fomátech, jeden vhdoný pro
+                sociální sítě,
+                druhý plný formát vhodný pro tisk</summary>
+        </details>
+
+        <details class="faq__item">
+            <summary style="font-size:15px" class="faq__question text-mont-400">V případě zájmu o fotografii nad rámec
+                balíšku stojí jedna
+                fotografie 300 Kč
+            </summary>
+        </details>
+
     </section>
 
     <section id="o_mne">
         <h3 class="section__title">O mně</h3>
         <div class="flex">
-            <div class="flex__item">
+            <div class="flex__item text-mont-400" style="font-size:15px">
                 <p>Jmenuji se Tereza, ale říkají mi Roze. Jsem fotografka, která se věnuje focením zvířat, hlavně psů a
                     koní.</p>
                 <p>K&nbsp;focení jsem se dostala v&nbsp;roce 2017, při nástupu na střední uměleckou školu, která se
@@ -140,8 +195,8 @@
     </section>
 
     <section id="otazky">
-        <h3 class="section__title">Často kladené otázky</h3>
-        <div class="faq">
+        <h3 class="section__title secondary-text-color">Často kladené otázky</h3>
+        <div class="faq text-mont-400">
             <details class="faq__item">
                 <summary class="faq__question">Jak si mohu focení objednat?</summary>
                 <div class="faq__answer">
@@ -191,12 +246,14 @@
         <h3 class="section__title">Kontakty</h3>
         <div class="flex">
             <div class="flex__half flex__half--left">
-                <h3>Napiš mi</h3>
-                <address class="flex__touch">
-                    <a class="flex__touch--item flex__touch--right" href="https://facebook.com" target="_blank">
+                <h3 style="font-size:25px">Napiš mi</h3>
+                <address class="flex__touch text-mont-400" style="font-size:15px">
+                    <a class="flex__touch--item flex__touch--right" href="https://facebook.com/roze.raw"
+                        target="_blank">
                         <img src="assets/icons/brands/facebook.svg" alt="Facebook" width="22">Facebook
                     </a>
-                    <a class="flex__touch--item flex__touch--right" href="https://instagram.com" target="_blank">
+                    <a class="flex__touch--item flex__touch--right" href="https://instagram.com/roze.raw"
+                        target="_blank">
                         <img src="assets/icons/brands/instagram.svg" alt="Instagram" width="22">Instagram
                     </a>
                     <a class="flex__touch--item flex__touch--right" href="https://eu.zonerama.com/rozeraw/1591225"
@@ -228,8 +285,8 @@
     </section>
 
     <footer>
-        <div><small>© 2024 Roze. Všechna práva vyhrazena. <a class="secondary-text-color"
-                    href="obchodni-podminky.html">Obchodní
+        <div class="text-mont-400" style="font-size:15px"><small>© 2024 Roze. Všechna práva vyhrazena. <a
+                    class="secondary-text-color" href="obchodni-podminky.html">Obchodní
                     podmínky</a></small></div>
     </footer>
 
