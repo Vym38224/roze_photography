@@ -97,9 +97,8 @@ section {
 
 header,
 section {
-    padding-left: 14em;
-    padding-right: 14em;
-    box-sizing: border-box;
+    padding-left: 22em;
+    padding-right: 22em;
 }
 
 #home {
@@ -295,14 +294,9 @@ h3 h4 {
 }
 
 .nabidka__cards {
-    display: flex;
-    justify-content: stretch;
-    align-items: flex-start;
-    flex-wrap: nowrap;
     gap: 0;
     margin-top: 1.5em;
     width: 100%;
-    position: relative;
 }
 
 .package.is-visible {
@@ -833,6 +827,7 @@ footer div {
     border-bottom-right-radius: 0;
     border-top-left-radius: 0.9rem;
     border-bottom-left-radius: 0.9rem;
+    max-height: 380px;
 }
 
 .nabidka__cards .package--right {
@@ -840,6 +835,7 @@ footer div {
     border-bottom-left-radius: 0;
     border-top-right-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
+    max-height: 380px;
 }
 
 .nabidka__cards .package--middle {
