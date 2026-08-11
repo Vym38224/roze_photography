@@ -19,7 +19,6 @@ function updateHeaderTransparency() {
     if (!siteHeader) {
         return;
     }
-
     siteHeader.classList.toggle('header--scrolled', window.scrollY > headerScrollThreshold);
 }
 
@@ -43,39 +42,7 @@ if ('IntersectionObserver' in window) {
     animatedElements.forEach((element) => animatedElementsObserver.observe(element));
 }
 
-const filterButtons = document.querySelectorAll('.portfolio-filter button');
-const portfolioItems = document.querySelectorAll('.portfolio-gallery-grid .portfolio__item');
-
-function applyPortfolioFilter(filter) {
-    portfolioItems.forEach((item) => {
-        const category = item.dataset.category;
-        item.style.display = filter === 'all' || category === filter ? '' : 'none';
-    });
-}
-
-if (filterButtons.length && portfolioItems.length) {
-    filterButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const filter = button.dataset.filter;
-            filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
-            applyPortfolioFilter(filter);
-        });
-    });
-
-    filterButtons[0].classList.add('active');
-    applyPortfolioFilter('all');
-}
-
-const lightbox = document.querySelector('.photo-lightbox');
-const lightboxImage = document.querySelector('.photo-lightbox__image');
-const lightboxCaption = document.querySelector('.photo-lightbox__caption');
-const lightboxCloseButton = document.querySelector('.photo-lightbox__close');
-const lightboxPrevButton = document.querySelector('.photo-lightbox__nav--prev');
-const lightboxNextButton = document.querySelector('.photo-lightbox__nav--next');
-const zoomableImages = Array.from(document.querySelectorAll('#portfolio img, #portfolio-page img, #omne img, .portfolio__item img'));
-let currentLightboxIndex = -1;
-
-// Masonry-like grid packing while preserving DOM (row-major) order.
+// --- MASONRY LAYOUT (přesunuto výše, aby jej filtr mohl bezpečně volat) ---
 function updateMasonryGrid(gridSelector, itemSelector) {
     const grids = document.querySelectorAll(gridSelector);
     grids.forEach((grid) => {
@@ -104,11 +71,70 @@ const runMasonry = () => updateMasonryGrid('.portfolio__selection, .portfolio-ga
 
 window.addEventListener('load', () => {
     runMasonry();
-    // Also update after a short delay to account for late-loading images
     setTimeout(runMasonry, 500);
 });
 
 window.addEventListener('resize', debounce(runMasonry, 150));
+
+
+// --- FILTRACE A MÍCHÁNÍ PORTFOLIA ---
+const filterButtons = document.querySelectorAll('.portfolio-filter button');
+const galleryGrid = document.querySelector('.portfolio-gallery-grid');
+// Převedeno na Array, abychom mohli prvky míchat
+let portfolioItems = Array.from(document.querySelectorAll('.portfolio-gallery-grid .portfolio__item'));
+
+// Algoritmus pro náhodné zamíchání prvků v poli
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function applyPortfolioFilter(filter) {
+    if (filter === 'all') {
+        // Zamíchá položky a fyzicky je přeskládá v DOMu
+        shuffleArray(portfolioItems);
+        portfolioItems.forEach((item) => {
+            item.style.display = '';
+            if (galleryGrid) galleryGrid.appendChild(item); // appendChild prvek přesune na novou pozici
+        });
+    } else {
+        // Jen skryje/zobrazí podle kategorie
+        portfolioItems.forEach((item) => {
+            const category = item.dataset.category;
+            item.style.display = category === filter ? '' : 'none';
+        });
+    }
+    
+    // Po změně zobrazení nebo pořadí je nutné ihned přepočítat Masonry mřížku
+    setTimeout(runMasonry, 50);
+}
+
+if (filterButtons.length && portfolioItems.length) {
+    filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+            filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+            applyPortfolioFilter(filter);
+        });
+    });
+
+    // Inicializace výchozího stavu při načtení
+    filterButtons[0].classList.add('active');
+    applyPortfolioFilter('all');
+}
+
+
+// --- LIGHTBOX ---
+const lightbox = document.querySelector('.photo-lightbox');
+const lightboxImage = document.querySelector('.photo-lightbox__image');
+const lightboxCaption = document.querySelector('.photo-lightbox__caption');
+const lightboxCloseButton = document.querySelector('.photo-lightbox__close');
+const lightboxPrevButton = document.querySelector('.photo-lightbox__nav--prev');
+const lightboxNextButton = document.querySelector('.photo-lightbox__nav--next');
+const zoomableImages = Array.from(document.querySelectorAll('#portfolio img, #portfolio-page img, #omne img, .portfolio__item img'));
+let currentLightboxIndex = -1;
 
 function openLightboxAt(index) {
     const image = zoomableImages[index];
@@ -140,19 +166,13 @@ function closeLightbox() {
 }
 
 function showPreviousImage() {
-    if (zoomableImages.length === 0) {
-        return;
-    }
-
+    if (zoomableImages.length === 0) return;
     const previousIndex = (currentLightboxIndex - 1 + zoomableImages.length) % zoomableImages.length;
     openLightboxAt(previousIndex);
 }
 
 function showNextImage() {
-    if (zoomableImages.length === 0) {
-        return;
-    }
-
+    if (zoomableImages.length === 0) return;
     const nextIndex = (currentLightboxIndex + 1) % zoomableImages.length;
     openLightboxAt(nextIndex);
 }
@@ -181,23 +201,22 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && lightbox.classList.contains('open')) {
         closeLightbox();
     }
-
     if (event.key === 'ArrowLeft' && lightbox.classList.contains('open')) {
         showPreviousImage();
     }
-
     if (event.key === 'ArrowRight' && lightbox.classList.contains('open')) {
         showNextImage();
     }
 });
 
+
+// --- TLAČÍTKO SCROLL NAHORU ---
 const scrollToTopButton = document.querySelector('.scroll-to-top');
 
 function toggleScrollToTopButton() {
     if (!scrollToTopButton) {
         return;
     }
-
     const shouldShow = window.scrollY > 400;
     scrollToTopButton.classList.toggle('is-visible', shouldShow);
 }

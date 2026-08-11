@@ -268,7 +268,7 @@ h3 h4 {
     justify-content: center;
     margin-left: auto;
     flex-shrink: 0;
-    font-size: 1.4rem;
+    font-size: 15px;
     line-height: 1;
     color: var(--text-color-secondary);
     transition: transform 0.2s ease;
