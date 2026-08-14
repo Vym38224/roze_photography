@@ -106,7 +106,7 @@ function applyPortfolioFilter(filter) {
             item.style.display = category === filter ? '' : 'none';
         });
     }
-    
+
     // Po změně zobrazení nebo pořadí je nutné ihned přepočítat Masonry mřížku
     setTimeout(runMasonry, 50);
 }
@@ -146,8 +146,10 @@ function openLightboxAt(index) {
     currentLightboxIndex = index;
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt || '';
-    lightboxCaption.textContent = image.alt || '';
+    // Priorita je data-caption (jméno), pokud není, použije se alt
+    lightboxCaption.textContent = image.dataset.caption || image.alt || '';
     lightbox.classList.add('open');
+
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
 }
