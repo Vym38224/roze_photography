@@ -92,6 +92,10 @@ h1 {
     letter-spacing: 0;
 }
 
+h1:hover {
+    opacity: 70%
+}
+
 header.header--scrolled {
     background-color: var(--bg-color-primary)
 }
