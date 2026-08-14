@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap');
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+
     font-family: "Playfair Display", serif;
     font-weight: 600;
     line-height: 1.5;
@@ -95,10 +102,11 @@ section {
     padding-bottom: 4em;
 }
 
-header,
-section {
-    padding-left: 22em;
-    padding-right: 22em;
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 #home {
@@ -268,7 +276,7 @@ h3 h4 {
     justify-content: center;
     margin-left: auto;
     flex-shrink: 0;
-    font-size: 15px;
+    font-size: 1.2em;
     line-height: 1;
     color: var(--text-color-secondary);
     transition: transform 0.2s ease;
@@ -617,8 +625,17 @@ s .flex__touch--item img {
 
 header.flex {
     display: flex;
-    align-items: center
+    align-items: center;
+    justify-content: center;
 }
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
 
 .flex__item--left {
     display: flex;
@@ -746,10 +763,6 @@ textarea {
 
 .upper_form input:last-child {
     margin-right: 0;
-}
-
-.back {
-    margin-right: 1.8em;
 }
 
 .map {
