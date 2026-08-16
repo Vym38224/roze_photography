@@ -114,7 +114,7 @@
                 </div>
                 <div class="package package--middle">
                     <div class="package__content">
-                        <h4 class="secondary-text-color">Standart</h4>
+                        <h4 class="secondary-text-color">Standard</h4>
                         <span>Oblíbené</span>
                         <div class="package__features primary-text-color package__features--middle text-mont-400 ">
                             <p>8 fotografií ve Fine Art stylu</p>
@@ -216,7 +216,8 @@
                     </p>
                 </div>
                 <div class="flex__item-left">
-                    <img class="o_mne" src="assets/pictures/ja/ja_01.webp" alt="fotka o mne">
+                    <img class="o_mne" src="assets/pictures/ja/ja_01.webp"
+                        alt="Fotografka Tereza - Roze Photography Prostějov">
                 </div>
             </div>
         </div>
@@ -294,16 +295,25 @@
                     </address>
                 </div>
                 <div class="flex__half contact-form-panel">
-                    <form>
+                    <form action="process-form.php" method="POST">
                         <div class="upper_form">
-                            <input style="border-radius: 0.9rem" type="text" placeholder="Plné jméno" required>
-                            <input style="border-radius: 0.9rem" type="email" placeholder="E-mailová adresa" required>
+                            <input style="border-radius: 0.9rem" type="text" name="name" placeholder="Plné jméno"
+                                required>
+                            <input style="border-radius: 0.9rem" type="email" name="email"
+                                placeholder="E-mailová adresa" required>
                         </div>
                         <div>
-                            <input style="border-radius: 0.9rem" type="text" placeholder="Předmět" required>
-                            <textarea style="border-radius: 0.9rem" placeholder="Napište zprávu" required></textarea>
+                            <input style="border-radius: 0.9rem" type="text" name="subject" placeholder="Předmět"
+                                required>
+                            <textarea style="border-radius: 0.9rem" name="message" placeholder="Napište zprávu"
+                                required></textarea>
+
+                            <input type="text" name="website" style="display:none !important;" tabindex="-1"
+                                autocomplete="off">
+
                             <div class="portfolio__more-link" style="margin-top:-0.4em;">
-                                <a class=" background__color--tertiary">Odeslat</a>
+                                <a type="submit" class="background__color--tertiary"
+                                    style="border:none; cursor:pointer;">Odeslat</a>
                             </div>
                         </div>
                     </form>
