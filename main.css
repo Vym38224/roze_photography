@@ -175,7 +175,7 @@ h3 h4 {
 .section__title {
     width: fit-content;
     display: block;
-    margin: 0 auto 1.2rem;
+    margin: 0 auto;
     text-align: center;
     z-index: 1;
     position: relative;
@@ -184,6 +184,7 @@ h3 h4 {
     opacity: 0;
     transform: translateY(2.5rem);
     will-change: transform, opacity;
+    padding: 0;
     padding-bottom: 1em;
 }
 
