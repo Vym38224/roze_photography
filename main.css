@@ -1476,12 +1476,10 @@ footer div {
 
     @media (max-width:960px) {
         section {
-            padding-top: 2vw;
+            padding-top: 3em;
+            padding-bottom: 2em;
         }
 
-        section {
-            padding-bottom: 1em;
-        }
 
         .flex {
             flex-direction: column;
@@ -1668,8 +1666,7 @@ footer div {
 
         footer {
             flex-direction: column;
-            gap: 0.5em;
-            margin: 1em;
+            font-size: 6px;
         }
     }
 }
