@@ -236,3 +236,11 @@ window.addEventListener('scroll', toggleScrollToTopButton, { passive: true });
 if (scrollToTopButton) {
     scrollToTopButton.addEventListener('click', scrollUp);
 }
+
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('is-active');
+    menu.classList.toggle('is-active');
+});

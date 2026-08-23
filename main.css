@@ -112,6 +112,7 @@ section {
     padding: 0 20px;
 }
 
+
 #home {
     background-image: url('assets/pictures/uvodka2.webp');
     background-size: cover;
@@ -301,6 +302,8 @@ h3 h4 {
 }
 
 .nabidka__cards {
+    display: flex;
+    flex-direction: row;
     gap: 0;
     margin-top: 1.5em;
     width: 100%;
@@ -400,7 +403,6 @@ h3 h4 {
     .portfolio-divider {
         height: 40vh;
         min-height: 40vh;
-        background-attachment: scroll;
     }
 }
 
@@ -592,7 +594,91 @@ s .flex__touch--item img {
 }
 
 .menu__item:hover {
-    opacity: 70%
+    opacity: 0.7;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    display: block;
+    width: 25px;
+    height: 2.5px;
+    background-color: var(--text-color-primary);
+    transition: transform 0.3s, opacity 0.3s;
+    position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+@media (max-width: 960px) {
+    .menu-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 5em;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-color-primary);
+        margin: 0;
+        padding: 1em 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .menu.is-active {
+        display: flex;
+    }
+
+    .menu__item {
+        padding: 0.75em 1.5em;
+    }
+
+    .menu__item:first-child {
+        padding-right: 1.5em;
+    }
+
+    .menu-toggle.is-active .hamburger {
+        background-color: transparent;
+    }
+
+    .menu-toggle.is-active .hamburger::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .menu-toggle.is-active .hamburger::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
 }
 
 /* social icons */
@@ -852,7 +938,6 @@ footer div {
 
 .nabidka__cards .package--middle {
     height: 480px;
-    width: 220px;
     box-shadow: 0 24px 60px rgba(22, 39, 79, 0.12);
 }
 
@@ -1252,6 +1337,41 @@ footer div {
     }
 }
 
+@media (max-width: 827px) {
+
+    .nabidka__cards {
+        flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+        /* Vycentruje dětské prvky (karty/obsah) horizontálně na střed */
+        justify-content: center;
+        /* Vycentruje obsah vertikálně (pokud má kontejner definovanou výšku) */
+        text-align: center;
+        /* Zajistí zarovnání textu uvnitř karet na střed */
+        width: 100%;
+    }
+
+    .nabidka__cards .package--left {
+        max-width: 380px;
+        border-radius: 0.9rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .nabidka__cards .package--right {
+        max-width: 380px;
+        border-radius: 0.9rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .nabidka__cards .package--middle {
+        width: 420px;
+    }
+
+
+}
+
 @media (max-width: 560px) {
 
     .portfolio__selection,
@@ -1261,6 +1381,24 @@ footer div {
 
     .photo-lightbox {
         padding: 1rem;
+    }
+
+    .nabidka__cards .package--left {
+        max-width: 290px;
+        border-radius: 0.9rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .nabidka__cards .package--right {
+        max-width: 290px;
+        border-radius: 0.9rem;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .nabidka__cards .package--middle {
+        width: 330px;
     }
 
     @media (max-width: 820px) {
@@ -1299,24 +1437,6 @@ footer div {
         .photo-lightbox__close {
             top: 0.5rem;
             right: 0.5rem;
-        }
-    }
-
-    /* Ensure packages don't shrink on desktop but stack on smaller screens */
-    @media (max-width: 900px) {
-        .nabidka__cards {
-            flex-direction: column;
-            gap: 1rem;
-            align-items: stretch;
-        }
-
-        .nabidka__cards .package,
-        .nabidka__cards .package--left,
-        .nabidka__cards .package--right,
-        .nabidka__cards .package--middle {
-            flex: 1 1 auto;
-            width: auto;
-            max-width: 100%;
         }
     }
 
@@ -1367,10 +1487,6 @@ footer div {
             flex-direction: column;
         }
 
-        .nabidka__cards {
-            flex-direction: column;
-        }
-
         .portfolio__gallery.flex {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -1417,11 +1533,6 @@ footer div {
             padding-top: 0em;
         }
 
-        .big_avatar,
-        .flex__item--right {
-            display: none;
-        }
-
         .grid__horizontal {
             grid-template-columns: 1fr;
             grid-template-areas:
@@ -1462,6 +1573,16 @@ footer div {
     }
 
     @media (max-width: 560px) {
+
+        .social {
+            display: none;
+        }
+
+        .menu-toggle {
+            margin: 0;
+            padding: 0;
+        }
+
         button {
             margin-bottom: 1em;
         }
