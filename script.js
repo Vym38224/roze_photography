@@ -1,7 +1,10 @@
+// --- PREPÍNÁNÍ GALERIE ---
 function toggleGallery(button) {
     const header = button.parentElement;
     const category = header.parentElement;
     const gallery = category.querySelector('.portfolio__gallery');
+
+    if (!gallery) return;
 
     if (gallery.style.display === 'none') {
         gallery.style.display = 'block';
@@ -12,22 +15,22 @@ function toggleGallery(button) {
     }
 }
 
+// --- HEADER TRANSPARENCY ---
 const siteHeader = document.querySelector('header');
 const headerScrollThreshold = 20;
 
 function updateHeaderTransparency() {
-    if (!siteHeader) {
-        return;
-    }
+    if (!siteHeader) return;
     siteHeader.classList.toggle('header--scrolled', window.scrollY > headerScrollThreshold);
 }
 
 updateHeaderTransparency();
 window.addEventListener('scroll', updateHeaderTransparency, { passive: true });
 
+// --- INTERSECTION OBSERVER ---
 const animatedElements = document.querySelectorAll('.section__title, .faq__description, .faq__item, .contact-form-panel, .package:not(.package--middle), .o_mne, .portfolio__selection .portfolio__item');
 
-if ('IntersectionObserver' in window) {
+if ('IntersectionObserver' in window && animatedElements.length > 0) {
     const animatedElementsObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -42,7 +45,7 @@ if ('IntersectionObserver' in window) {
     animatedElements.forEach((element) => animatedElementsObserver.observe(element));
 }
 
-// --- MASONRY LAYOUT (přesunuto výše, aby jej filtr mohl bezpečně volat) ---
+// --- MASONRY LAYOUT ---
 function updateMasonryGrid(gridSelector, itemSelector) {
     const grids = document.querySelectorAll(gridSelector);
     grids.forEach((grid) => {
@@ -76,14 +79,11 @@ window.addEventListener('load', () => {
 
 window.addEventListener('resize', debounce(runMasonry, 150));
 
-
 // --- FILTRACE A MÍCHÁNÍ PORTFOLIA ---
 const filterButtons = document.querySelectorAll('.portfolio-filter button');
 const galleryGrid = document.querySelector('.portfolio-gallery-grid');
-// Převedeno na Array, abychom mohli prvky míchat
 let portfolioItems = Array.from(document.querySelectorAll('.portfolio-gallery-grid .portfolio__item'));
 
-// Algoritmus pro náhodné zamíchání prvků v poli
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -93,21 +93,18 @@ function shuffleArray(array) {
 
 function applyPortfolioFilter(filter) {
     if (filter === 'all') {
-        // Zamíchá položky a fyzicky je přeskládá v DOMu
         shuffleArray(portfolioItems);
         portfolioItems.forEach((item) => {
             item.style.display = '';
-            if (galleryGrid) galleryGrid.appendChild(item); // appendChild prvek přesune na novou pozici
+            if (galleryGrid) galleryGrid.appendChild(item);
         });
     } else {
-        // Jen skryje/zobrazí podle kategorie
         portfolioItems.forEach((item) => {
             const category = item.dataset.category;
             item.style.display = category === filter ? '' : 'none';
         });
     }
 
-    // Po změně zobrazení nebo pořadí je nutné ihned přepočítat Masonry mřížku
     setTimeout(runMasonry, 50);
 }
 
@@ -120,11 +117,9 @@ if (filterButtons.length && portfolioItems.length) {
         });
     });
 
-    // Inicializace výchozího stavu při načtení
     filterButtons[0].classList.add('active');
     applyPortfolioFilter('all');
 }
-
 
 // --- LIGHTBOX ---
 const lightbox = document.querySelector('.photo-lightbox');
@@ -138,18 +133,15 @@ let currentLightboxIndex = -1;
 
 function openLightboxAt(index) {
     const image = zoomableImages[index];
-
-    if (!image) {
-        return;
-    }
+    if (!image || !lightbox || !lightboxImage) return;
 
     currentLightboxIndex = index;
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt || '';
-    // Priorita je data-caption (jméno), pokud není, použije se alt
-    lightboxCaption.textContent = image.dataset.caption || image.alt || '';
+    if (lightboxCaption) {
+        lightboxCaption.textContent = image.dataset.caption || image.alt || '';
+    }
     lightbox.classList.add('open');
-
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
 }
@@ -159,11 +151,12 @@ function openLightbox(image) {
 }
 
 function closeLightbox() {
+    if (!lightbox || !lightboxImage) return;
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
     lightboxImage.src = '';
     lightboxImage.alt = '';
-    lightboxCaption.textContent = '';
+    if (lightboxCaption) lightboxCaption.textContent = '';
     document.body.classList.remove('modal-open');
 }
 
@@ -179,46 +172,49 @@ function showNextImage() {
     openLightboxAt(nextIndex);
 }
 
-zoomableImages.forEach((image) => {
-    image.addEventListener('click', () => openLightbox(image));
-});
+if (zoomableImages.length > 0) {
+    zoomableImages.forEach((image) => {
+        image.addEventListener('click', () => openLightbox(image));
+    });
+}
 
-lightbox.addEventListener('click', (event) => {
-    if (event.target === lightbox) {
-        closeLightbox();
-    }
-});
+if (lightbox) {
+    lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) closeLightbox();
+    });
+}
 
-lightboxCloseButton.addEventListener('click', closeLightbox);
-lightboxPrevButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    showPreviousImage();
-});
-lightboxNextButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    showNextImage();
-});
+if (lightboxCloseButton) {
+    lightboxCloseButton.addEventListener('click', closeLightbox);
+}
+
+if (lightboxPrevButton) {
+    lightboxPrevButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        showPreviousImage();
+    });
+}
+
+if (lightboxNextButton) {
+    lightboxNextButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        showNextImage();
+    });
+}
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && lightbox.classList.contains('open')) {
-        closeLightbox();
-    }
-    if (event.key === 'ArrowLeft' && lightbox.classList.contains('open')) {
-        showPreviousImage();
-    }
-    if (event.key === 'ArrowRight' && lightbox.classList.contains('open')) {
-        showNextImage();
-    }
-});
+    if (!lightbox || !lightbox.classList.contains('open')) return;
 
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') showPreviousImage();
+    if (event.key === 'ArrowRight') showNextImage();
+});
 
 // --- TLAČÍTKO SCROLL NAHORU ---
 const scrollToTopButton = document.querySelector('.scroll-to-top');
 
 function toggleScrollToTopButton() {
-    if (!scrollToTopButton) {
-        return;
-    }
+    if (!scrollToTopButton) return;
     const shouldShow = window.scrollY > 400;
     scrollToTopButton.classList.toggle('is-visible', shouldShow);
 }
@@ -237,10 +233,24 @@ if (scrollToTopButton) {
     scrollToTopButton.addEventListener('click', scrollUp);
 }
 
-const menuToggle = document.querySelector('.menu-toggle');
-const menu = document.querySelector('.menu');
+// --- INICIALIZACE PO NAČTENÍ DOM ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger menu a zavírání po kliknutí na odkaz
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
 
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('is-active');
-    menu.classList.toggle('is-active');
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            menu.classList.toggle('is-active');
+        });
+
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                menu.classList.remove('is-active');
+            });
+        });
+    }
 });
