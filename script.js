@@ -84,6 +84,22 @@ const filterButtons = document.querySelectorAll('.portfolio-filter button');
 const galleryGrid = document.querySelector('.portfolio-gallery-grid');
 let portfolioItems = Array.from(document.querySelectorAll('.portfolio-gallery-grid .portfolio__item'));
 
+document.querySelectorAll('.portfolio-filter button').forEach(button => {
+    button.addEventListener('click', () => {
+        // 1. Odstraní třídu is-active ze všech tlačítek
+        document.querySelectorAll('.portfolio-filter button').forEach(btn => {
+            btn.classList.remove('is-active');
+        });
+
+        // 2. Přidá is-active kliknutému tlačítku
+        button.classList.add('is-active');
+
+        // 3. Zavolá tvou filtrační funkci s filtrem z HTML (data-filter)
+        const filterValue = button.getAttribute('data-filter');
+        applyPortfolioFilter(filterValue);
+    });
+});
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
