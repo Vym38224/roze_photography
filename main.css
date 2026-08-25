@@ -620,7 +620,7 @@ s .flex__touch--item img {
 }
 
 .menu__item:hover {
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 .menu-toggle {
@@ -640,6 +640,9 @@ s .flex__touch--item img {
     background-color: var(--text-color-primary);
     transition: transform 0.3s, opacity 0.3s;
     position: relative;
+    padding: 12px 8px;
+    background-clip: content-box; 
+    box-sizing: content-box;
 }
 
 .hamburger::before,
@@ -765,10 +768,6 @@ figure {
     z-index: 1;
     align-self: center;
     margin-top: -1em;
-}
-
-figcaption {
-    padding-left: 1em;
 }
 
 .small_avatar {
@@ -1099,8 +1098,7 @@ footer div {
 
 .photo-lightbox__caption {
     color: #f5f5f7;
-    font-size: 1.2rem;
-    text-align: center;
+    font-size: 1rem;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
 }
@@ -1133,7 +1131,6 @@ footer div {
 
         .photo-lightbox__content {
         max-height: calc(100vh - 120px); /* Ponechá prostor dole pro šipky */
-        margin-bottom: 60px;
         }
 
         .photo-lightbox__image {
@@ -1507,10 +1504,6 @@ footer div {
         .border-dark {
             margin: 4vw;
             margin-bottom: -1em;
-        }
-
-        figcaption figure {
-            margin-left: 1em;
         }
 
         .flex__item--left {
