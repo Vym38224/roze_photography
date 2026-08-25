@@ -122,7 +122,7 @@ section {
 
 
 .home {
-    background-image: url('assets/pictures/uvodka2.webp');
+    background-image: url('assets/pictures/uvodni/uvodka.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -131,7 +131,7 @@ section {
 }
 
 .portfolio {
-    background-image: url('assets/pictures/uvodka_portfolio.webp');
+    background-image: url('assets/pictures/uvodni/uvodka_portfolio.webp');
     background-size: cover;
     background-position: 0 73%;
     background-repeat: no-repeat;
@@ -140,10 +140,10 @@ section {
 }
 
 .portfolio-divider-scnd { 
-    background-image: url('assets/pictures/psi/psi_26.jpg')}
+    background-image: url('assets/pictures/prechody/psi_26.jpg')}
 
 @media (max-width:720px){
-    .portfolio-divider-scnd { background-image: url('assets/pictures/psi/psi_27.jpg');}
+    .portfolio-divider-scnd { background-image: url('assets/pictures/prechody/psi_27.jpg');}
 }
 
 @keyframes hero-title-rise {
