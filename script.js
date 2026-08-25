@@ -144,11 +144,26 @@ const lightboxCaption = document.querySelector('.photo-lightbox__caption');
 const lightboxCloseButton = document.querySelector('.photo-lightbox__close');
 const lightboxPrevButton = document.querySelector('.photo-lightbox__nav--prev');
 const lightboxNextButton = document.querySelector('.photo-lightbox__nav--next');
-const zoomableImages = Array.from(document.querySelectorAll('#portfolio img, #portfolio-page img, #omne img, .portfolio__item img'));
+
 let currentLightboxIndex = -1;
 
+// Získá pouze aktuálně viditelné obrázky na základě filtru
+function getVisibleImages() {
+    return Array.from(document.querySelectorAll('.portfolio__item img')).filter(img => {
+        const parent = img.closest('.portfolio__item');
+        return parent && parent.style.display !== 'none';
+    });
+}
+
 function openLightboxAt(index) {
-    const image = zoomableImages[index];
+    const visibleImages = getVisibleImages();
+    if (visibleImages.length === 0) return;
+
+    // Cyklování dopředu a dozadu v rámci viditelných fotek
+    if (index < 0) index = visibleImages.length - 1;
+    if (index >= visibleImages.length) index = 0;
+
+    const image = visibleImages[index];
     if (!image || !lightbox || !lightboxImage) return;
 
     currentLightboxIndex = index;
@@ -163,7 +178,11 @@ function openLightboxAt(index) {
 }
 
 function openLightbox(image) {
-    openLightboxAt(zoomableImages.indexOf(image));
+    const visibleImages = getVisibleImages();
+    const index = visibleImages.indexOf(image);
+    if (index !== -1) {
+        openLightboxAt(index);
+    }
 }
 
 function closeLightbox() {
@@ -177,22 +196,20 @@ function closeLightbox() {
 }
 
 function showPreviousImage() {
-    if (zoomableImages.length === 0) return;
-    const previousIndex = (currentLightboxIndex - 1 + zoomableImages.length) % zoomableImages.length;
-    openLightboxAt(previousIndex);
+    openLightboxAt(currentLightboxIndex - 1);
 }
 
 function showNextImage() {
-    if (zoomableImages.length === 0) return;
-    const nextIndex = (currentLightboxIndex + 1) % zoomableImages.length;
-    openLightboxAt(nextIndex);
+    openLightboxAt(currentLightboxIndex + 1);
 }
 
-if (zoomableImages.length > 0) {
-    zoomableImages.forEach((image) => {
-        image.addEventListener('click', () => openLightbox(image));
-    });
-}
+// Navázání kliknutí na obrázky v portfoliu
+document.addEventListener('click', (event) => {
+    const img = event.target.closest('.portfolio__item img');
+    if (img) {
+        openLightbox(img);
+    }
+});
 
 if (lightbox) {
     lightbox.addEventListener('click', (event) => {
