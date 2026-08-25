@@ -43,7 +43,7 @@ $headers[] = "X-Mailer: PHP/".phpversion();
 $headers[] = "Content-Type: text/plain; charset=UTF-8";
 
 // Odeslání e-mailu
-if (mail($to, $email_subject, $email_content, implode("\r\n", $headers))) {
+if (mail($to, $email_subject, $email_content, implode("\r\n", $headers), "-f info@rozephotography.cz")) {
     
     echo "<script>alert('Děkuji! Vaše zpráva byla úspěšně odeslána.'); window.location.href='index.html';</script>";
 } else {
