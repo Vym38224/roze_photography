@@ -1400,6 +1400,76 @@ footer div {
     line-height: 1;
 }
 
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-primary);
+  padding: 1rem;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  box-sizing: border-box;
+}
+
+.cookie-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cookie-content p {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex: 1 1 300px;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-accept {
+  background-color: var(--bg-color-tertiary);
+  color: var(--bg-color-primary);
+}
+
+.btn-reject {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-secondary);
+  border: 0.5px solid var(--bg-color-tertiary);
+  opacity: 0.9;
+}
+
+
 @media (max-width: 820px) {
 
     .portfolio__selection,
@@ -1469,6 +1539,10 @@ footer div {
     .portfolio__selection,
     .portfolio-gallery-grid {
         column-count: 1;
+    }
+    .cookie-buttons {
+        display: flex;
+        gap: 0.75rem;
     }
 
     @media (max-width: 820px) {

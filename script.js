@@ -287,3 +287,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- COOKIES ---
+
+// Pomocná funkce pro uložení a aktualizaci souhlasu
+function setAnalyticsConsent(status) {
+  // 1. Uložíme rozhodnutí do prohlížeče
+  localStorage.setItem('analytics_consent', status);
+
+  // 2. Okamžitě aktualizujeme Google Consent Mode
+  gtag('consent', 'update', {
+    'analytics_storage': status
+  });
+}
+
+// Navázání na tlačítka v cookie liště
+document.getElementById('btn-accept-analytics').addEventListener('click', function() {
+  setAnalyticsConsent('granted');
+  hideCookieBanner(); // Funkce pro skrytí lišty
+});
+
+document.getElementById('btn-reject-analytics').addEventListener('click', function() {
+  setAnalyticsConsent('denied');
+  hideCookieBanner(); // Funkce pro skrytí lišty
+});
+
+// Zobrazení lišty pouze v případě, že uživatel ještě nerozhodl
+document.addEventListener('DOMContentLoaded', function() {
+  var savedConsent = localStorage.getItem('analytics_consent');
+  
+  // Pokud v localStorage nic není (uživatel je na webu poprvé), zobrazíme lištu
+  if (savedConsent === null) {
+    showCookieBanner();
+  }
+});
+
+function showCookieBanner() {
+  document.getElementById('cookie-banner').style.display = 'block';
+}
+
+function hideCookieBanner() {
+  document.getElementById('cookie-banner').style.display = 'none';
+}
