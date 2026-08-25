@@ -642,7 +642,7 @@ s .flex__touch--item img {
     background-color: var(--text-color-primary);
     transition: transform 0.3s, opacity 0.3s;
     position: relative;
-    padding: 12px 8px;
+    padding: 12px 0;
     background-clip: content-box; 
     box-sizing: content-box;
 }
