@@ -323,6 +323,7 @@ h3 h4 {
     width: 100%;
 }
 
+
 .package.is-visible {
     animation: package-card-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -1395,7 +1396,7 @@ footer div {
 }
 
 .scroll-to-top__icon {
-    font-size: 1.35rem;
+    font-size: 1rem;
     line-height: 1;
 }
 
@@ -1416,6 +1417,7 @@ footer div {
         justify-content: center;
         text-align: center;
         width: 100%;
+        gap:7.5px;
     }
 
     .nabidka__cards .package--left {
@@ -1434,6 +1436,10 @@ footer div {
         margin-bottom: 0.5rem;
         box-shadow: none;
     }
+
+    .package.is-visible {
+    animation: none;
+}
 
     .flex{
             flex-direction: column;
