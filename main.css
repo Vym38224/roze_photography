@@ -138,6 +138,14 @@ section {
 }
 
 
+.portfolio-divider-scnd { 
+    background-image: url('assets/pictures/psi/psi_26.jpg')}
+
+@media (max-width:720px){
+    .portfolio-divider-scnd { background-image: url('assets/pictures/psi/psi_27.jpg');}
+}
+
+
 @keyframes hero-title-rise {
     from {
         opacity: 0;
