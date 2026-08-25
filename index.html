@@ -37,27 +37,19 @@
     </script>
 
     <!-- Následuje standardní Google Analytics / GTM -->
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WMQF6LJ2');</script>
-    <!-- End Google Tag Manager -->
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
     <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
+
+    gtag('config', 'G-VXYXXCQDZ6');
     </script>
 
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WMQF6LJ2"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <header class="text-mont-400">
         <div class="container">
             <div class="flex__item--left">
@@ -355,8 +347,8 @@
                                 autocomplete="off">
 
                             <div class="portfolio__more-link" style="margin-top:-0.4em;">
-                                <a type="submit" class="background__color--tertiary"
-                                    style="border:none; cursor:pointer;">Odeslat</a>
+                                <button type="submit" class="background__color--tertiary"
+                                    style="border:none; cursor:pointer;">Odeslat</button>
                             </div>
                         </div>
                     </form>
@@ -387,8 +379,8 @@
         <div class="cookie-content">
             <p>Tato webová stránka používá cookies pro zajištění správného fungování a pro analýzu návštěvnosti. Některé z nich jsou nezbytné, zatímco jiné pomáhají vylepšit tento web a Váš uživatelský zážitek.</p>
             <div class="cookie-buttons">
-            <button id="btn-reject-analytics" class="btn btn-reject">Odmítnout</button>
-            <button id="btn-accept-analytics" class="btn btn-accept">Přijmout</button>
+            <button id="btn-reject-analytics" class="btn btn-reject">Přijmout nezbytné</button>
+            <button id="btn-accept-analytics" class="btn btn-accept">Přijmout vše</button>
             </div>
         </div>
     </div>

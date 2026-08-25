@@ -1306,19 +1306,23 @@ footer div {
     margin-top: 1.5rem;
 }
 
-.portfolio__more-link a {
+.portfolio__more-link a,
+.portfolio__more-link button
+ {
     display: inline-block;
     padding: 0.7rem 2.4rem;
     font-size: 18px;
     background: var(--bg-color-tertiary);
     color: #fff;
-    border-radius: 20px;
+    border-radius: 0.9rem;
     text-decoration: none;
     font-weight: 600;
     transition: background 0.2s ease;
+    font-family: "Playfair Display", serif;
 }
 
-.portfolio__more-link a[href]::after {
+.portfolio__more-link a[href]::after,
+.portfolio__more-link button[href]::after {
     display: inline-block;
     width: 0;
     height: 0;
@@ -1333,7 +1337,9 @@ footer div {
     display: none !important;
 }
 
-.portfolio__more-link a:hover {
+.portfolio__more-link a:hover,
+.portfolio__more-link button:hover
+ {
     background: #254a71;
 }
 
@@ -1414,7 +1420,7 @@ footer div {
 }
 
 .cookie-content {
-  max-width: 1000px;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   align-items: center;
