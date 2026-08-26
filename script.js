@@ -167,7 +167,8 @@ function openLightboxAt(index) {
     if (!image || !lightbox || !lightboxImage) return;
 
     currentLightboxIndex = index;
-    lightboxImage.src = image.src;
+    // Preferuje plnou kvalitu z data-full, záložně použije src (náhled)
+    lightboxImage.src = image.dataset.full || image.src;
     lightboxImage.alt = image.alt || '';
     if (lightboxCaption) {
         lightboxCaption.textContent = image.dataset.caption || image.alt || '';
@@ -290,42 +291,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- COOKIES ---
 
-// Pomocná funkce pro uložení a aktualizaci souhlasu
 function setAnalyticsConsent(status) {
-  // 1. Uložíme rozhodnutí do prohlížeče
   localStorage.setItem('analytics_consent', status);
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', {
+      'analytics_storage': status
+    });
+  }
+}
 
-  // 2. Okamžitě aktualizujeme Google Consent Mode
-  gtag('consent', 'update', {
-    'analytics_storage': status
+// Navázání s kontrolou (spustí se jen tam, kde tlačítka fyzicky existují)
+const btnAccept = document.getElementById('btn-accept-analytics');
+const btnReject = document.getElementById('btn-reject-analytics');
+
+if (btnAccept) {
+  btnAccept.addEventListener('click', function() {
+    setAnalyticsConsent('granted');
+    hideCookieBanner();
   });
 }
 
-// Navázání na tlačítka v cookie liště
-document.getElementById('btn-accept-analytics').addEventListener('click', function() {
-  setAnalyticsConsent('granted');
-  hideCookieBanner(); // Funkce pro skrytí lišty
-});
-
-document.getElementById('btn-reject-analytics').addEventListener('click', function() {
-  setAnalyticsConsent('denied');
-  hideCookieBanner(); // Funkce pro skrytí lišty
-});
+if (btnReject) {
+  btnReject.addEventListener('click', function() {
+    setAnalyticsConsent('denied');
+    hideCookieBanner();
+  });
+}
 
 // Zobrazení lišty pouze v případě, že uživatel ještě nerozhodl
 document.addEventListener('DOMContentLoaded', function() {
   var savedConsent = localStorage.getItem('analytics_consent');
   
-  // Pokud v localStorage nic není (uživatel je na webu poprvé), zobrazíme lištu
   if (savedConsent === null) {
     showCookieBanner();
   }
 });
 
 function showCookieBanner() {
-  document.getElementById('cookie-banner').style.display = 'block';
+  const banner = document.getElementById('cookie-banner');
+  if (banner) banner.style.display = 'block';
 }
 
 function hideCookieBanner() {
-  document.getElementById('cookie-banner').style.display = 'none';
+  const banner = document.getElementById('cookie-banner');
+  if (banner) banner.style.display = 'none';
 }
