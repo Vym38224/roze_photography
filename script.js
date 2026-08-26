@@ -55,9 +55,9 @@ function updateMasonryGrid(gridSelector, itemSelector) {
         items.forEach((item) => {
             const img = item.querySelector('img');
             if (!img) return;
-            const height = img.getBoundingClientRect().height;
-            const rowSpan = Math.max(1, Math.ceil((height + rowGap) / (rowHeight + rowGap)));
-            item.style.gridRowEnd = 'span ' + rowSpan;
+            const height = item.querySelector('img').getBoundingClientRect().height;
+            const rowSpan = Math.round(height / rowHeight); // round místo ceil bývá stabilnější
+            item.style.gridRowEnd = `span ${rowSpan}`;
         });
     });
 }
