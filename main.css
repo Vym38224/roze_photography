@@ -711,7 +711,7 @@ s .flex__touch--item img {
 /* social icons */
 .social {
     display: flex;
-    gap: 18px;
+    gap:2px;
     align-items: center
 }
 
@@ -719,7 +719,8 @@ s .flex__touch--item img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none
+    text-decoration: none;
+    padding:8px;
 }
 
 .social__item img {
