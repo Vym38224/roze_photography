@@ -1121,7 +1121,7 @@ footer div {
     background: rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width:720px) {
+@media (max-width:1444px) {
 
         .photo-lightbox__content {
         max-height: calc(100vh - 120px); /* Ponechá prostor dole pro šipky */
