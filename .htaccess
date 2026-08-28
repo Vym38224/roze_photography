@@ -1,1 +1,25 @@
 ErrorDocument 404 /404.html
+
+# Zapnutí kešování obrázků a statických souborů na 1 rok (WEDOS Apache)
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Obrázky (AVIF, WEBP, JPG, PNG, SVG)
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+
+    # Styly, skripty a fonty
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(avif|webp|jpe?g|png|svg|css|js|woff2)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+</IfModule>
