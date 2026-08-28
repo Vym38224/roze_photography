@@ -23,3 +23,8 @@ ErrorDocument 404 /404.html
         Header set Cache-Control "max-age=31536000, public, immutable"
     </FilesMatch>
 </IfModule>
+
+# Přesměrování starých podstránek na odpovídající sekce nového webu
+Redirect 301 /o-mne.html https://rozephotography.cz/index.html#o_mne
+Redirect 301 /kontakty.html https://rozephotography.cz/index.html#kontakty
+Redirect 301 /cenik.html https://rozephotography.cz/index.html#nabidka
