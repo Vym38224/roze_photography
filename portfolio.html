@@ -48,10 +48,27 @@
             'wait_for_update': 500
         });
 
-        gtag('js', new Date());
-        gtag('config', 'G-VXYXXCQDZ6');
+        // Funkce pro odložené načtení Google Analytics
+        function loadAnalytics() {
+            if (window.analyticsLoaded) return;
+            window.analyticsLoaded = true;
+
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6';
+            script.async = true;
+            document.head.appendChild(script);
+
+            gtag('js', new Date());
+            gtag('config', 'G-VXYXXCQDZ6');
+        }
+
+        // Načte analytiku při skrolování nebo po 3,5 sekundách
+        ['touchstart', 'scroll'].forEach(function (event) {
+            window.addEventListener(event, loadAnalytics, { once: true, passive: true });
+        });
+        setTimeout(loadAnalytics, 3500);
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>

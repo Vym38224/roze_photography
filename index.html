@@ -48,10 +48,27 @@
             'wait_for_update': 500
         });
 
-        gtag('js', new Date());
-        gtag('config', 'G-VXYXXCQDZ6');
+        // Funkce pro odložené načtení Google Analytics
+        function loadAnalytics() {
+            if (window.analyticsLoaded) return;
+            window.analyticsLoaded = true;
+
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6';
+            script.async = true;
+            document.head.appendChild(script);
+
+            gtag('js', new Date());
+            gtag('config', 'G-VXYXXCQDZ6');
+        }
+
+        // Načte analytiku při skrolování nebo po 3,5 sekundách
+        ['touchstart', 'scroll'].forEach(function (event) {
+            window.addEventListener(event, loadAnalytics, { once: true, passive: true });
+        });
+        setTimeout(loadAnalytics, 3500);
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -100,33 +117,33 @@
                 <h2 class="section__title">Má tvorba</h2>
                 <div class="portfolio__selection">
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio5.webp"
+                        <img src="assets/thumbs/portfolio/portfolio5.avif"
                             data-full="assets/pictures/portfolio/portfolio5.jpg"
                             alt="Fine Art portrét psa v lese - Roze Photography Prostějov" data-caption="Bella"
                             loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio2.webp"
+                        <img src="assets/thumbs/portfolio/portfolio2.avif"
                             data-full="assets/pictures/portfolio/portfolio2.jpg" alt="Atmosférické focení psů na louce"
                             data-caption="Lemy" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio3.webp"
+                        <img src="assets/thumbs/portfolio/portfolio3.avif"
                             data-full="assets/pictures/portfolio/portfolio3.jpg"
                             alt="Detailní portrét psa - fotograf zvířat" data-caption="Ryja" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio1.webp"
+                        <img src="assets/thumbs/portfolio/portfolio1.avif"
                             data-full="assets/pictures/portfolio/portfolio1.jpg"
                             alt="Profesionální fotografie psa v pohybu" data-caption="Cairo" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio4.webp"
+                        <img src="assets/thumbs/portfolio/portfolio4.avif"
                             data-full="assets/pictures/portfolio/portfolio4.jpg" alt="Focení psů v přírodě Prostějov"
                             data-caption="Bisquit" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio6.webp"
+                        <img src="assets/thumbs/portfolio/portfolio6.avif"
                             data-full="assets/pictures/portfolio/portfolio6.jpg"
                             alt="Umělecká fotografie psa - Fine Art styl" data-caption="Satana" loading="lazy">
                     </div>
@@ -267,7 +284,7 @@
                         </p>
                     </div>
                     <div class="flex__item-left">
-                        <img class="o_mne" src="assets/pictures/ja/ja_01.webp"
+                        <img class="o_mne" src="assets/pictures/ja/ja_01.avif"
                             alt="Fotografka Tereza - Roze Photography Prostějov">
                     </div>
                 </div>
@@ -328,18 +345,22 @@
                         <address class="flex__touch text-mont-400" style="font-size:15px">
                             <a class="flex__touch--item flex__touch--right" href="https://facebook.com/roze.raw"
                                 target="_blank">
-                                <img src="assets/icons/brands/facebook.svg" alt="Facebook" width="22">Facebook
+                                <img src="assets/icons/brands/facebook.svg" alt="Facebook"
+                                    style=" width:22px; height:22px;">Facebook
                             </a>
                             <a class="flex__touch--item flex__touch--right" href="https://instagram.com/roze.raw"
                                 target="_blank">
-                                <img src="assets/icons/brands/instagram.svg" alt="Instagram" width="22">Instagram
+                                <img src="assets/icons/brands/instagram.svg" alt="Instagram"
+                                    style=" width:22px; height:22px;">Instagram
                             </a>
                             <a class="flex__touch--item flex__touch--right"
                                 href="https://eu.zonerama.com/rozeraw/1591225" target="_blank">
-                                <img src="assets/icons/brands/camera.svg" alt="Zonerama" width="24">Zonerama
+                                <img src="assets/icons/brands/camera.svg" alt="Zonerama"
+                                    style=" width:24px; height:24px;">Zonerama
                             </a>
                             <a class="flex__touch--item flex__touch--right" href="mailto:info@rozephotography.cz">
-                                <img src="assets/icons/brands/mail.svg" alt="Email" width="22">info@rozephotography.cz
+                                <img src="assets/icons/brands/mail.svg" alt="Email"
+                                    style=" width:22px; height:22px;">info@rozephotography.cz
                             </a>
                             <div style="padding-top:0.5em;">IČ: <span style="color:#1d3a5a">23096934</span></div>
                         </address>
@@ -402,8 +423,6 @@
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 
 </html>
