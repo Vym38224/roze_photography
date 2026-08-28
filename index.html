@@ -12,61 +12,46 @@
         content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní.">
     <meta property="og:image" content="https://rozephotography.cz/assets/pictures/uvodni/uvodka.webp">
 
-    <link rel="stylesheet" href="main.css">
-
-    <!-- Preconnect pro zrychlení DNS a TLS navázání spojení -->
+    <!-- 1. Včasné navázání DNS/TLS spojení a preload hlavní fotky -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="assets/pictures/uvodni/uvodka.webp" as="image" fetchpriority="high">
 
-    <!-- Asynchronní načtení Google Fonts bez blokování renderu -->
+    <!-- 2. Sloučené asynchronní načtení Google Fonts (neblokuje render) -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@500;600&display=swap"
         media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@500;600&display=swap">
     </noscript>
 
-    <link rel="preload" href="assets/pictures/uvodni/uvodka.webp" as="image" fetchpriority="high">
+    <!-- 3. Hlavní CSS styly -->
+    <link rel="stylesheet" href="main.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <!-- 4. Favicony -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon_io/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
 
+    <!-- 5. Consent Mode a Google Analytics -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
 
-        // 1. Načtení uložení z localStorage
         var savedAnalyticsConsent = localStorage.getItem('analytics_consent');
-
-        // 2. Určení výchozího stavu:
-        // Pokud uživatel v minulosti udělil souhlas ('granted'), nastavíme ho.
-        // Pokud nesouhlasil nebo ještě nevolil (null), výchozí stav bude 'denied'.
         var defaultStatus = (savedAnalyticsConsent === 'granted') ? 'granted' : 'denied';
 
-        // 3. Nastavení výchozího (default) Consent Mode
         gtag('consent', 'default', {
             'analytics_storage': defaultStatus,
             'wait_for_update': 500
         });
-    </script>
 
-    <!-- Následuje standardní Google Analytics / GTM -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-VXYXXCQDZ6');
     </script>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
 </head>
 
 <body>

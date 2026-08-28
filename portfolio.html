@@ -4,73 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Roze Photography</title>
+    <title>Roze Photography | Focení zvířat Prostějov</title>
     <meta name="description"
         content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní. Zachytím jedinečnou osobnost vašeho mazlíčka.">
     <meta property="og:title" content="Roze Photography">
-    <meta property="og:description" content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní.">
+    <meta property="og:description"
+        content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní.">
     <meta property="og:image" content="https://rozephotography.cz/assets/pictures/uvodni/uvodka.webp">
 
-    <link rel="stylesheet" href="main.css">
-
-    <!-- Preconnect pro zrychlení DNS a TLS navázání spojení -->
+    <!-- 1. Včasné navázání DNS/TLS spojení a preload hlavní fotky -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="assets/pictures/uvodni/uvodka.webp" as="image" fetchpriority="high">
 
-    <!-- Asynchronní načtení Google Fonts bez blokování renderu -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" media="print" onload="this.media='all'">
+    <!-- 2. Sloučené asynchronní načtení Google Fonts (neblokuje render) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@500;600&display=swap"
+        media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:wght@500;600&display=swap">
     </noscript>
 
-    <link rel="preload" href="assets/pictures/uvodni/uvodka_portfolio.webp" as="image" fetchpriority="high">
+    <!-- 3. Hlavní CSS styly -->
+    <link rel="stylesheet" href="main.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- 4. Favicony -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon_io/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
 
+    <!-- 5. Consent Mode a Google Analytics -->
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
 
-    // 1. Načtení uložení z localStorage
-    var savedAnalyticsConsent = localStorage.getItem('analytics_consent');
+        var savedAnalyticsConsent = localStorage.getItem('analytics_consent');
+        var defaultStatus = (savedAnalyticsConsent === 'granted') ? 'granted' : 'denied';
 
-    // 2. Určení výchozího stavu:
-    // Pokud uživatel v minulosti udělil souhlas ('granted'), nastavíme ho.
-    // Pokud nesouhlasil nebo ještě nevolil (null), výchozí stav bude 'denied'.
-    var defaultStatus = (savedAnalyticsConsent === 'granted') ? 'granted' : 'denied';
+        gtag('consent', 'default', {
+            'analytics_storage': defaultStatus,
+            'wait_for_update': 500
+        });
 
-    // 3. Nastavení výchozího (default) Consent Mode
-    gtag('consent', 'default', {
-        'analytics_storage': defaultStatus,
-        'wait_for_update': 500
-    });
+        gtag('js', new Date());
+        gtag('config', 'G-VXYXXCQDZ6');
     </script>
-
-    <!-- Následuje standardní Google Analytics / GTM -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-VXYXXCQDZ6');
-    </script>
-
 </head>
 
 <body>
     <header class="text-mont-400">
         <div class="container">
             <div class="flex__item--left">
-                <h1><a href="index.html" style="text-decoration:none; font-weight: 600;" class="primary-text-color">Roze|Photography</a>
+                <h1><a href="index.html" style="text-decoration:none; font-weight: 600;"
+                        class="primary-text-color">Roze|Photography</a>
                 </h1>
             </div>
             <div class="flex__item--right">
@@ -87,8 +76,7 @@
                 </nav>
                 <nav class="social">
                     <a class="social__item primary-text-color" href="https://www.facebook.com/roze.raw" target="_blank">
-                        <img src="assets/icons/brands/facebook.svg" alt="Facebook"
-                            style="width:19px; height:19px;">
+                        <img src="assets/icons/brands/facebook.svg" alt="Facebook" style="width:19px; height:19px;">
                     </a>
                     <a class="social__item primary-text-color" href="https://www.instagram.com/roze.raw/"
                         target="_blank">
@@ -122,158 +110,208 @@
                 <div class="portfolio-gallery-grid">
                     <!-- PSI -->
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_01.webp" data-full="assets/pictures/psi/psi_01.jpg" alt="Pes 1" data-caption="Hailey" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_01.webp" data-full="assets/pictures/psi/psi_01.jpg" alt="Pes 1"
+                            data-caption="Hailey" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_02.webp" data-full="assets/pictures/psi/psi_02.jpg" alt="Pes 2" data-caption="Mili" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_02.webp" data-full="assets/pictures/psi/psi_02.jpg" alt="Pes 2"
+                            data-caption="Mili" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_03.webp" data-full="assets/pictures/psi/psi_03.jpg" alt="Pes 3" data-caption="Ragí" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_03.webp" data-full="assets/pictures/psi/psi_03.jpg" alt="Pes 3"
+                            data-caption="Ragí" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_04.webp" data-full="assets/pictures/psi/psi_04.jpg" alt="Pes 4" data-caption="Youjeen" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_04.webp" data-full="assets/pictures/psi/psi_04.jpg" alt="Pes 4"
+                            data-caption="Youjeen" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_05.webp" data-full="assets/pictures/psi/psi_05.jpg" alt="Pes 5" data-caption="Cairo" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_05.webp" data-full="assets/pictures/psi/psi_05.jpg" alt="Pes 5"
+                            data-caption="Cairo" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_06.webp" data-full="assets/pictures/psi/psi_06.jpg" alt="Pes 6" data-caption="Ebby" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_06.webp" data-full="assets/pictures/psi/psi_06.jpg" alt="Pes 6"
+                            data-caption="Ebby" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_07.webp" data-full="assets/pictures/psi/psi_07.jpg" alt="Pes 7" data-caption="Ryja" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_07.webp" data-full="assets/pictures/psi/psi_07.jpg" alt="Pes 7"
+                            data-caption="Ryja" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_08.webp" data-full="assets/pictures/psi/psi_08.jpg" alt="Pes 8" data-caption="Cami" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_08.webp" data-full="assets/pictures/psi/psi_08.jpg" alt="Pes 8"
+                            data-caption="Cami" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_09.webp" data-full="assets/pictures/psi/psi_09.jpg" alt="Pes 9" data-caption="Marley" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_09.webp" data-full="assets/pictures/psi/psi_09.jpg" alt="Pes 9"
+                            data-caption="Marley" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_10.webp" data-full="assets/pictures/psi/psi_10.jpg" alt="Pes 10" data-caption="Marley" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_10.webp" data-full="assets/pictures/psi/psi_10.jpg" alt="Pes 10"
+                            data-caption="Marley" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_11.webp" data-full="assets/pictures/psi/psi_11.jpg" alt="Pes 11" data-caption="Arwen" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_11.webp" data-full="assets/pictures/psi/psi_11.jpg" alt="Pes 11"
+                            data-caption="Arwen" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_12.webp" data-full="assets/pictures/psi/psi_12.jpg" alt="Pes 12" data-caption="Satana" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_12.webp" data-full="assets/pictures/psi/psi_12.jpg" alt="Pes 12"
+                            data-caption="Satana" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_13.webp" data-full="assets/pictures/psi/psi_13.jpg" alt="Pes 13" data-caption="Hailey" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_13.webp" data-full="assets/pictures/psi/psi_13.jpg" alt="Pes 13"
+                            data-caption="Hailey" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_14.webp" data-full="assets/pictures/psi/psi_14.jpg" alt="Pes 14" data-caption="Blackie" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_14.webp" data-full="assets/pictures/psi/psi_14.jpg" alt="Pes 14"
+                            data-caption="Blackie" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_15.webp" data-full="assets/pictures/psi/psi_15.jpg" alt="Pes 15" data-caption="Niky a Blackie" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_15.webp" data-full="assets/pictures/psi/psi_15.jpg" alt="Pes 15"
+                            data-caption="Niky a Blackie" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="psi">
-                        <img src="assets/thumbs/psi/psi_16.webp" data-full="assets/pictures/psi/psi_16.jpg" alt="Pes 16" data-caption="Mili" loading="lazy">
+                        <img src="assets/thumbs/psi/psi_16.webp" data-full="assets/pictures/psi/psi_16.jpg" alt="Pes 16"
+                            data-caption="Mili" loading="lazy">
                     </div>
 
                     <!-- KONĚ -->
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_01.webp" data-full="assets/pictures/kone/kone_01.jpg" alt="Kůň 1" data-caption="Anička a Queen Mary" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_01.webp" data-full="assets/pictures/kone/kone_01.jpg"
+                            alt="Kůň 1" data-caption="Anička a Queen Mary" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_02.webp" data-full="assets/pictures/kone/kone_02.jpg" alt="Kůň 2" data-caption="Bisquit" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_02.webp" data-full="assets/pictures/kone/kone_02.jpg"
+                            alt="Kůň 2" data-caption="Bisquit" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_03.webp" data-full="assets/pictures/kone/kone_03.jpg" alt="Kůň 3" data-caption="Bisquit" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_03.webp" data-full="assets/pictures/kone/kone_03.jpg"
+                            alt="Kůň 3" data-caption="Bisquit" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_04.webp" data-full="assets/pictures/kone/kone_04.jpg" alt="Kůň 4" data-caption="Pája a Parabella" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_04.webp" data-full="assets/pictures/kone/kone_04.jpg"
+                            alt="Kůň 4" data-caption="Pája a Parabella" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_05.webp" data-full="assets/pictures/kone/kone_05.jpg" alt="Kůň 5" data-caption="Parabella" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_05.webp" data-full="assets/pictures/kone/kone_05.jpg"
+                            alt="Kůň 5" data-caption="Parabella" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_06.webp" data-full="assets/pictures/kone/kone_06.jpg" alt="Kůň 6" data-caption="Vendy a Electra" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_06.webp" data-full="assets/pictures/kone/kone_06.jpg"
+                            alt="Kůň 6" data-caption="Vendy a Electra" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_07.webp" data-full="assets/pictures/kone/kone_07.jpg" alt="Kůň 7" data-caption="Vendy a Electra" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_07.webp" data-full="assets/pictures/kone/kone_07.jpg"
+                            alt="Kůň 7" data-caption="Vendy a Electra" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_08.webp" data-full="assets/pictures/kone/kone_08.jpg" alt="Kůň 8" data-caption="Pája a Parabella" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_08.webp" data-full="assets/pictures/kone/kone_08.jpg"
+                            alt="Kůň 8" data-caption="Pája a Parabella" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_09.webp" data-full="assets/pictures/kone/kone_09.jpg" alt="Kůň 9" data-caption="Pája a Parabella" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_09.webp" data-full="assets/pictures/kone/kone_09.jpg"
+                            alt="Kůň 9" data-caption="Pája a Parabella" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_10.webp" data-full="assets/pictures/kone/kone_10.jpg" alt="Kůň 10" data-caption="Emilka" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_10.webp" data-full="assets/pictures/kone/kone_10.jpg"
+                            alt="Kůň 10" data-caption="Emilka" loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="kone">
-                        <img src="assets/thumbs/kone/kone_11.webp" data-full="assets/pictures/kone/kone_11.jpg" alt="Kůň 11" data-caption="Simča a Bonie" loading="lazy">
+                        <img src="assets/thumbs/kone/kone_11.webp" data-full="assets/pictures/kone/kone_11.jpg"
+                            alt="Kůň 11" data-caption="Simča a Bonie" loading="lazy">
                     </div>
 
                     <!-- ZÁVODY -->
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_01.webp" data-full="assets/pictures/zavody/zavody_01.jpg" alt="Závod 1" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_01.webp" data-full="assets/pictures/zavody/zavody_01.jpg"
+                            alt="Závod 1" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_02.webp" data-full="assets/pictures/zavody/zavody_02.jpg" alt="Závod 2" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_02.webp" data-full="assets/pictures/zavody/zavody_02.jpg"
+                            alt="Závod 2" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_03.webp" data-full="assets/pictures/zavody/zavody_03.jpg" alt="Závod 3" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_03.webp" data-full="assets/pictures/zavody/zavody_03.jpg"
+                            alt="Závod 3" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_04.webp" data-full="assets/pictures/zavody/zavody_04.jpg" alt="Závod 4" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_04.webp" data-full="assets/pictures/zavody/zavody_04.jpg"
+                            alt="Závod 4" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_05.webp" data-full="assets/pictures/zavody/zavody_05.jpg" alt="Závod 5" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_05.webp" data-full="assets/pictures/zavody/zavody_05.jpg"
+                            alt="Závod 5" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_06.webp" data-full="assets/pictures/zavody/zavody_06.jpg" alt="Závod 6" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_06.webp" data-full="assets/pictures/zavody/zavody_06.jpg"
+                            alt="Závod 6" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_07.webp" data-full="assets/pictures/zavody/zavody_07.jpg" alt="Závod 7" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_07.webp" data-full="assets/pictures/zavody/zavody_07.jpg"
+                            alt="Závod 7" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_08.webp" data-full="assets/pictures/zavody/zavody_08.jpg" alt="Závod 8" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_08.webp" data-full="assets/pictures/zavody/zavody_08.jpg"
+                            alt="Závod 8" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_09.webp" data-full="assets/pictures/zavody/zavody_09.jpg" alt="Závod 9" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_09.webp" data-full="assets/pictures/zavody/zavody_09.jpg"
+                            alt="Závod 9" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_10.webp" data-full="assets/pictures/zavody/zavody_10.jpg" alt="Závod 10" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_10.webp" data-full="assets/pictures/zavody/zavody_10.jpg"
+                            alt="Závod 10" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_11.webp" data-full="assets/pictures/zavody/zavody_11.jpg" alt="Závod 11" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_11.webp" data-full="assets/pictures/zavody/zavody_11.jpg"
+                            alt="Závod 11" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_12.webp" data-full="assets/pictures/zavody/zavody_12.jpg" alt="Závod 12" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_12.webp" data-full="assets/pictures/zavody/zavody_12.jpg"
+                            alt="Závod 12" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_13.webp" data-full="assets/pictures/zavody/zavody_13.jpg" alt="Závod 13" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_13.webp" data-full="assets/pictures/zavody/zavody_13.jpg"
+                            alt="Závod 13" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_14.webp" data-full="assets/pictures/zavody/zavody_14.jpg" alt="Závod 14" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_14.webp" data-full="assets/pictures/zavody/zavody_14.jpg"
+                            alt="Závod 14" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_15.webp" data-full="assets/pictures/zavody/zavody_15.jpg" alt="Závod 15" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_15.webp" data-full="assets/pictures/zavody/zavody_15.jpg"
+                            alt="Závod 15" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_16.webp" data-full="assets/pictures/zavody/zavody_16.jpg" alt="Závod 16" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_16.webp" data-full="assets/pictures/zavody/zavody_16.jpg"
+                            alt="Závod 16" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_17.webp" data-full="assets/pictures/zavody/zavody_17.jpg" alt="Závod 17" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_17.webp" data-full="assets/pictures/zavody/zavody_17.jpg"
+                            alt="Závod 17" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_18.webp" data-full="assets/pictures/zavody/zavody_18.jpg" alt="Závod 18" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_18.webp" data-full="assets/pictures/zavody/zavody_18.jpg"
+                            alt="Závod 18" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_19.webp" data-full="assets/pictures/zavody/zavody_19.jpg" alt="Závod 19" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_19.webp" data-full="assets/pictures/zavody/zavody_19.jpg"
+                            alt="Závod 19" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_20.webp" data-full="assets/pictures/zavody/zavody_20.jpg" alt="Závod 20" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_20.webp" data-full="assets/pictures/zavody/zavody_20.jpg"
+                            alt="Závod 20" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_21.webp" data-full="assets/pictures/zavody/zavody_21.jpg" alt="Závod 21" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_21.webp" data-full="assets/pictures/zavody/zavody_21.jpg"
+                            alt="Závod 21" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_22.webp" data-full="assets/pictures/zavody/zavody_22.jpg" alt="Závod 22" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_22.webp" data-full="assets/pictures/zavody/zavody_22.jpg"
+                            alt="Závod 22" data-caption=" " loading="lazy">
                     </div>
                     <div class="portfolio__item" data-category="zavody">
-                        <img src="assets/thumbs/zavody/zavody_23.webp" data-full="assets/pictures/zavody/zavody_23.jpg" alt="Závod 23" data-caption=" " loading="lazy">
+                        <img src="assets/thumbs/zavody/zavody_23.webp" data-full="assets/pictures/zavody/zavody_23.jpg"
+                            alt="Závod 23" data-caption=" " loading="lazy">
                     </div>
                 </div>
             </div>
