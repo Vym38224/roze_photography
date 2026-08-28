@@ -45,19 +45,28 @@ if ('IntersectionObserver' in window && animatedElements.length > 0) {
     animatedElements.forEach((element) => animatedElementsObserver.observe(element));
 }
 
-// --- MASONRY LAYOUT ---
+// --- MASONRY LAYOUT (Optimized against Forced Reflow) ---
 function updateMasonryGrid(gridSelector, itemSelector) {
     const grids = document.querySelectorAll(gridSelector);
     grids.forEach((grid) => {
         const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows')) || 8;
-        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap')) || 0;
         const items = grid.querySelectorAll(itemSelector);
-        items.forEach((item) => {
+
+        // 1. FÁZE: Pouze čtení geometrie všech prvků najednou
+        const itemData = Array.from(items).map((item) => {
             const img = item.querySelector('img');
-            if (!img) return;
-            const height = item.querySelector('img').getBoundingClientRect().height;
-            const rowSpan = Math.round(height / rowHeight); // round místo ceil bývá stabilnější
-            item.style.gridRowEnd = `span ${rowSpan}`;
+            return {
+                item,
+                height: img ? img.getBoundingClientRect().height : 0
+            };
+        });
+
+        // 2. FÁZE: Pouze zápis stylů (prohlížeč přepočítá layout jen jednou)
+        itemData.forEach(({ item, height }) => {
+            if (height > 0) {
+                const rowSpan = Math.round(height / rowHeight);
+                item.style.gridRowEnd = `span ${rowSpan}`;
+            }
         });
     });
 }
@@ -74,7 +83,7 @@ const runMasonry = () => updateMasonryGrid('.portfolio__selection, .portfolio-ga
 
 window.addEventListener('load', () => {
     runMasonry();
-    setTimeout(runMasonry, 500);
+    setTimeout(runMasonry, 300);
 });
 
 window.addEventListener('resize', debounce(runMasonry, 150));
@@ -83,22 +92,6 @@ window.addEventListener('resize', debounce(runMasonry, 150));
 const filterButtons = document.querySelectorAll('.portfolio-filter button');
 const galleryGrid = document.querySelector('.portfolio-gallery-grid');
 let portfolioItems = Array.from(document.querySelectorAll('.portfolio-gallery-grid .portfolio__item'));
-
-document.querySelectorAll('.portfolio-filter button').forEach(button => {
-    button.addEventListener('click', () => {
-        // 1. Odstraní třídu is-active ze všech tlačítek
-        document.querySelectorAll('.portfolio-filter button').forEach(btn => {
-            btn.classList.remove('is-active');
-        });
-
-        // 2. Přidá is-active kliknutému tlačítku
-        button.classList.add('is-active');
-
-        // 3. Zavolá tvou filtrační funkci s filtrem z HTML (data-filter)
-        const filterValue = button.getAttribute('data-filter');
-        applyPortfolioFilter(filterValue);
-    });
-});
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -110,10 +103,13 @@ function shuffleArray(array) {
 function applyPortfolioFilter(filter) {
     if (filter === 'all') {
         shuffleArray(portfolioItems);
+        // Použití DocumentFragment zabraňuje opakovanému překreslování při vkládání do DOMu
+        const fragment = document.createDocumentFragment();
         portfolioItems.forEach((item) => {
             item.style.display = '';
-            if (galleryGrid) galleryGrid.appendChild(item);
+            fragment.appendChild(item);
         });
+        if (galleryGrid) galleryGrid.appendChild(fragment);
     } else {
         portfolioItems.forEach((item) => {
             const category = item.dataset.category;
@@ -121,19 +117,26 @@ function applyPortfolioFilter(filter) {
         });
     }
 
-    setTimeout(runMasonry, 50);
+    // Odložené spuštění přepočtu přes requestAnimationFrame pro plynulý vykreslovací cyklus
+    requestAnimationFrame(runMasonry);
 }
 
+// Sloučené a vyčištěné event listenery pro tlačítka filtrů
 if (filterButtons.length && portfolioItems.length) {
     filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            const filter = button.dataset.filter;
-            filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+            const filter = button.getAttribute('data-filter');
+
+            filterButtons.forEach((btn) => {
+                btn.classList.remove('is-active', 'active');
+            });
+
+            button.classList.add('is-active', 'active');
             applyPortfolioFilter(filter);
         });
     });
 
-    filterButtons[0].classList.add('active');
+    filterButtons[0].classList.add('is-active', 'active');
     applyPortfolioFilter('all');
 }
 
@@ -147,7 +150,6 @@ const lightboxNextButton = document.querySelector('.photo-lightbox__nav--next');
 
 let currentLightboxIndex = -1;
 
-// Získá pouze aktuálně viditelné obrázky na základě filtru
 function getVisibleImages() {
     return Array.from(document.querySelectorAll('.portfolio__item img')).filter(img => {
         const parent = img.closest('.portfolio__item');
@@ -159,7 +161,6 @@ function openLightboxAt(index) {
     const visibleImages = getVisibleImages();
     if (visibleImages.length === 0) return;
 
-    // Cyklování dopředu a dozadu v rámci viditelných fotek
     if (index < 0) index = visibleImages.length - 1;
     if (index >= visibleImages.length) index = 0;
 
@@ -167,7 +168,6 @@ function openLightboxAt(index) {
     if (!image || !lightbox || !lightboxImage) return;
 
     currentLightboxIndex = index;
-    // Preferuje plnou kvalitu z data-full, záložně použije src (náhled)
     lightboxImage.src = image.dataset.full || image.src;
     lightboxImage.alt = image.alt || '';
     if (lightboxCaption) {
@@ -204,7 +204,6 @@ function showNextImage() {
     openLightboxAt(currentLightboxIndex + 1);
 }
 
-// Navázání kliknutí na obrázky v portfoliu
 document.addEventListener('click', (event) => {
     const img = event.target.closest('.portfolio__item img');
     if (img) {
@@ -269,7 +268,6 @@ if (scrollToTopButton) {
 
 // --- INICIALIZACE PO NAČTENÍ DOM ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Hamburger menu a zavírání po kliknutí na odkaz
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.menu');
 
@@ -290,49 +288,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- COOKIES ---
-
 function setAnalyticsConsent(status) {
-  localStorage.setItem('analytics_consent', status);
-  if (typeof gtag === 'function') {
-    gtag('consent', 'update', {
-      'analytics_storage': status
-    });
-  }
+    localStorage.setItem('analytics_consent', status);
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+            'analytics_storage': status
+        });
+    }
 }
 
-// Navázání s kontrolou (spustí se jen tam, kde tlačítka fyzicky existují)
 const btnAccept = document.getElementById('btn-accept-analytics');
 const btnReject = document.getElementById('btn-reject-analytics');
 
 if (btnAccept) {
-  btnAccept.addEventListener('click', function() {
-    setAnalyticsConsent('granted');
-    hideCookieBanner();
-  });
+    btnAccept.addEventListener('click', function () {
+        setAnalyticsConsent('granted');
+        hideCookieBanner();
+    });
 }
 
 if (btnReject) {
-  btnReject.addEventListener('click', function() {
-    setAnalyticsConsent('denied');
-    hideCookieBanner();
-  });
+    btnReject.addEventListener('click', function () {
+        setAnalyticsConsent('denied');
+        hideCookieBanner();
+    });
 }
 
-// Zobrazení lišty pouze v případě, že uživatel ještě nerozhodl
-document.addEventListener('DOMContentLoaded', function() {
-  var savedConsent = localStorage.getItem('analytics_consent');
-  
-  if (savedConsent === null) {
-    showCookieBanner();
-  }
+document.addEventListener('DOMContentLoaded', function () {
+    var savedConsent = localStorage.getItem('analytics_consent');
+    if (savedConsent === null) {
+        showCookieBanner();
+    }
 });
 
 function showCookieBanner() {
-  const banner = document.getElementById('cookie-banner');
-  if (banner) banner.style.display = 'block';
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'block';
 }
 
 function hideCookieBanner() {
-  const banner = document.getElementById('cookie-banner');
-  if (banner) banner.style.display = 'none';
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'none';
 }
