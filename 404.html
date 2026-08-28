@@ -26,7 +26,10 @@
     </noscript>
 
     <!-- 3. Hlavní CSS styly -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="main.css">
+    </noscript>
 
     <!-- 4. Favicony -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
