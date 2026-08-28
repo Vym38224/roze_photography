@@ -8,7 +8,8 @@
     <meta name="description"
         content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní. Zachytím jedinečnou osobnost vašeho mazlíčka.">
     <meta property="og:title" content="Roze Photography">
-    <meta property="og:description" content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní.">
+    <meta property="og:description"
+        content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní.">
     <meta property="og:image" content="https://rozephotography.cz/assets/pictures/uvodni/uvodka.webp">
 
     <link rel="stylesheet" href="main.css">
@@ -18,48 +19,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Asynchronní načtení Google Fonts bez blokování renderu -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
     </noscript>
-    
+
     <link rel="preload" href="assets/pictures/uvodni/uvodka.webp" as="image" fetchpriority="high">
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon_io/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
 
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
 
-    // 1. Načtení uložení z localStorage
-    var savedAnalyticsConsent = localStorage.getItem('analytics_consent');
+        // 1. Načtení uložení z localStorage
+        var savedAnalyticsConsent = localStorage.getItem('analytics_consent');
 
-    // 2. Určení výchozího stavu:
-    // Pokud uživatel v minulosti udělil souhlas ('granted'), nastavíme ho.
-    // Pokud nesouhlasil nebo ještě nevolil (null), výchozí stav bude 'denied'.
-    var defaultStatus = (savedAnalyticsConsent === 'granted') ? 'granted' : 'denied';
+        // 2. Určení výchozího stavu:
+        // Pokud uživatel v minulosti udělil souhlas ('granted'), nastavíme ho.
+        // Pokud nesouhlasil nebo ještě nevolil (null), výchozí stav bude 'denied'.
+        var defaultStatus = (savedAnalyticsConsent === 'granted') ? 'granted' : 'denied';
 
-    // 3. Nastavení výchozího (default) Consent Mode
-    gtag('consent', 'default', {
-        'analytics_storage': defaultStatus,
-        'wait_for_update': 500
-    });
+        // 3. Nastavení výchozího (default) Consent Mode
+        gtag('consent', 'default', {
+            'analytics_storage': defaultStatus,
+            'wait_for_update': 500
+        });
     </script>
 
     <!-- Následuje standardní Google Analytics / GTM -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-VXYXXCQDZ6');
+        gtag('config', 'G-VXYXXCQDZ6');
     </script>
 
 </head>
@@ -85,8 +90,7 @@
                 </nav>
                 <nav class="social">
                     <a class="social__item primary-text-color" href="https://www.facebook.com/roze.raw" target="_blank">
-                        <img src="assets/icons/brands/facebook.svg" alt="Facebook"
-                            style=" width:19px; height:19px;">
+                        <img src="assets/icons/brands/facebook.svg" alt="Facebook" style=" width:19px; height:19px;">
                     </a>
                     <a class="social__item primary-text-color" href="https://www.instagram.com/roze.raw/"
                         target="_blank">
@@ -111,28 +115,35 @@
                 <h2 class="section__title">Má tvorba</h2>
                 <div class="portfolio__selection">
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio5.jpg" data-full="assets/pictures/portfolio/portfolio5.jpg"
-                            alt="Fine Art portrét psa v lese - Roze Photography Prostějov" data-caption="Bella" loading="lazy">
+                        <img src="assets/thumbs/portfolio/portfolio5.jpg"
+                            data-full="assets/pictures/portfolio/portfolio5.jpg"
+                            alt="Fine Art portrét psa v lese - Roze Photography Prostějov" data-caption="Bella"
+                            loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio2.jpg" data-full="assets/pictures/portfolio/portfolio2.jpg" alt="Atmosférické focení psů na louce"
+                        <img src="assets/thumbs/portfolio/portfolio2.jpg"
+                            data-full="assets/pictures/portfolio/portfolio2.jpg" alt="Atmosférické focení psů na louce"
                             data-caption="Lemy" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio3.jpg" data-full="assets/pictures/portfolio/portfolio3.jpg" alt="Detailní portrét psa - fotograf zvířat"
-                            data-caption="Ryja" loading="lazy">
+                        <img src="assets/thumbs/portfolio/portfolio3.jpg"
+                            data-full="assets/pictures/portfolio/portfolio3.jpg"
+                            alt="Detailní portrét psa - fotograf zvířat" data-caption="Ryja" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio1.jpg" data-full="assets/pictures/portfolio/portfolio1.jpg" alt="Profesionální fotografie psa v pohybu"
-                            data-caption="Cairo" loading="lazy">
+                        <img src="assets/thumbs/portfolio/portfolio1.jpg"
+                            data-full="assets/pictures/portfolio/portfolio1.jpg"
+                            alt="Profesionální fotografie psa v pohybu" data-caption="Cairo" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio4.jpg" data-full="assets/pictures/portfolio/portfolio4.jpg" alt="Focení psů v přírodě Prostějov"
+                        <img src="assets/thumbs/portfolio/portfolio4.jpg"
+                            data-full="assets/pictures/portfolio/portfolio4.jpg" alt="Focení psů v přírodě Prostějov"
                             data-caption="Bisquit" loading="lazy">
                     </div>
                     <div class="portfolio__item">
-                        <img src="assets/thumbs/portfolio/portfolio6.jpg" data-full="assets/pictures/portfolio/portfolio6.jpg" alt="Umělecká fotografie psa - Fine Art styl"
-                            data-caption="Satana" loading="lazy">
+                        <img src="assets/thumbs/portfolio/portfolio6.jpg"
+                            data-full="assets/pictures/portfolio/portfolio6.jpg"
+                            alt="Umělecká fotografie psa - Fine Art styl" data-caption="Satana" loading="lazy">
                     </div>
                 </div>
 
@@ -196,7 +207,8 @@
                     Objednáním se na focení
                     stvrzujete,
                     že jste
-                    seznámeni s <a class="secondary-text-color" href="obchodni-podminky.html">obchodními podmínkami</a> a
+                    seznámeni s <a class="secondary-text-color" href="obchodni-podminky.html">obchodními podmínkami</a>
+                    a
                     berete
                     na
                     vědomí styl mé práce.</p>
@@ -209,7 +221,8 @@
                 </div>
 
                 <details class="faq__item" style="margin-bottom: 1em;">
-                    <summary style="font-size:15px" class="faq__question text-mont-400">Všechny fotografie obdržíte ve dvou fomátech: tisková kvalita a formát vhodný pro sociální sítě.</summary>
+                    <summary style="font-size:15px" class="faq__question text-mont-400">Všechny fotografie obdržíte ve
+                        dvou fomátech: tisková kvalita a formát vhodný pro sociální sítě.</summary>
                 </details>
 
                 <details class="faq__item">
@@ -227,10 +240,12 @@
                 <h2 class="section__title">O mně</h2>
                 <div class="flex">
                     <div class="flex__item text-mont-400" style="font-size:15px">
-                        <p>Jmenuji se Tereza, ale říkají mi Roze. Jsem fotografka, která se věnuje focením zvířat, hlavně
+                        <p>Jmenuji se Tereza, ale říkají mi Roze. Jsem fotografka, která se věnuje focením zvířat,
+                            hlavně
                             psů a
                             koní.</p>
-                        <p>K&nbsp;focení jsem se dostala v&nbsp;roce 2017, při nástupu na střední uměleckou školu, která se
+                        <p>K&nbsp;focení jsem se dostala v&nbsp;roce 2017, při nástupu na střední uměleckou školu, která
+                            se
                             nachází
                             v&nbsp;Prostějově, odkud také pocházím. Nejdříve jsem fotila pouze v&nbsp;rámci školy se
                             zapůjčenými
@@ -238,7 +253,8 @@
                             Focení mě ale natolik chytlo, že jsem si v&nbsp;létě 2019 pořídila svojí první zrcadlovku
                             a&nbsp;to
                             Canon EOS 600D, se
-                            kterou jsem fotila až do roku 2023. Ve svých začátcích jsem se věnovala převážně focení přírody,
+                            kterou jsem fotila až do roku 2023. Ve svých začátcích jsem se věnovala převážně focení
+                            přírody,
                             krajin
                             a&nbsp;portrétům.</p>
                         <p>Zhruba v&nbsp;roce 2022 jsem se&nbsp;náhodou dostala k&nbsp;focení zvířat, nejdříve psů
@@ -250,9 +266,11 @@
                             a&nbsp;hlavně více aktivně. Ještě v&nbsp;témž roce jsem nafotila například Great Global
                             Greyhound
                             walk
-                            v&nbsp;Prostějově, který pořádala organizace Chrti v&nbsp;nouzi. Navázala jsem také spolupráci
+                            v&nbsp;Prostějově, který pořádala organizace Chrti v&nbsp;nouzi. Navázala jsem také
+                            spolupráci
                             s&nbsp;útulkem Voříšek,
-                            pro který jsem nafotila kalendář na&nbsp;rok 2024 a 2026. V&nbsp;roce 2023 jsem začala jezdit
+                            pro který jsem nafotila kalendář na&nbsp;rok 2024 a 2026. V&nbsp;roce 2023 jsem začala
+                            jezdit
                             fotit
                             na&nbsp;koňské
                             závody.</p>
@@ -331,8 +349,8 @@
                                 target="_blank">
                                 <img src="assets/icons/brands/instagram.svg" alt="Instagram" width="22">Instagram
                             </a>
-                            <a class="flex__touch--item flex__touch--right" href="https://eu.zonerama.com/rozeraw/1591225"
-                                target="_blank">
+                            <a class="flex__touch--item flex__touch--right"
+                                href="https://eu.zonerama.com/rozeraw/1591225" target="_blank">
                                 <img src="assets/icons/brands/camera.svg" alt="Zonerama" width="24">Zonerama
                             </a>
                             <a class="flex__touch--item flex__touch--right" href="mailto:info@rozephotography.cz">
@@ -368,7 +386,7 @@
                 </div>
             </div>
         </section>
-        
+
     </main>
 
     <footer>
@@ -391,10 +409,11 @@
 
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-content">
-            <p>Tato webová stránka používá cookies pro zajištění správného fungování a pro analýzu návštěvnosti. Některé z nich jsou nezbytné, zatímco jiné pomáhají vylepšit tento web a Váš uživatelský zážitek.</p>
+            <p>Tato webová stránka používá cookies pro zajištění správného fungování a pro analýzu návštěvnosti. Některé
+                z nich jsou nezbytné, zatímco jiné pomáhají vylepšit tento web a Váš uživatelský zážitek.</p>
             <div class="cookie-buttons">
-            <button id="btn-reject-analytics" class="btn btn-reject">Přijmout nezbytné</button>
-            <button id="btn-accept-analytics" class="btn btn-accept">Přijmout vše</button>
+                <button id="btn-reject-analytics" class="btn btn-reject">Přijmout nezbytné</button>
+                <button id="btn-accept-analytics" class="btn btn-accept">Přijmout vše</button>
             </div>
         </div>
     </div>

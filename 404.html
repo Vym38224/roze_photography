@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stránka nenalezena | Roze Photography</title>
+    <meta name="description"
+        content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní. Zachytím jedinečnou osobnost vašeho mazlíčka.">
+    <meta property="og:title" content="Roze Photography">
+    <meta property="og:description"
+        content="Fotografka zvířat v Prostějově. Specializuji se na portréty, zejména psů a koní.">
+    <meta property="og:image" content="https://rozephotography.cz/assets/pictures/uvodni/uvodka.webp">
+
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Preconnect pro zrychlení DNS a TLS navázání spojení -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Asynchronní načtení Google Fonts bez blokování renderu -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    </noscript>
+
+    <link rel="preload" href="assets/pictures/uvodni/uvodka.webp" as="image" fetchpriority="high">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon_io/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        // 1. Načtení uložení z localStorage
+        var savedAnalyticsConsent = localStorage.getItem('analytics_consent');
+
+        // 2. Určení výchozího stavu:
+        // Pokud uživatel v minulosti udělil souhlas ('granted'), nastavíme ho.
+        // Pokud nesouhlasil nebo ještě nevolil (null), výchozí stav bude 'denied'.
+        var defaultStatus = (savedAnalyticsConsent === 'granted') ? 'granted' : 'denied';
+
+        // 3. Nastavení výchozího (default) Consent Mode
+        gtag('consent', 'default', {
+            'analytics_storage': defaultStatus,
+            'wait_for_update': 500
+        });
+    </script>
+
+    <!-- Následuje standardní Google Analytics / GTM -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYXXCQDZ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VXYXXCQDZ6');
+    </script>
+
+</head>
+
+<body>
+
+    <header class="text-mont-400">
+        <div class="container">
+            <div class="flex__item--left">
+                <h1><a href="index.html" style="text-decoration:none; font-weight: 600;"
+                        class="primary-text-color">Roze|Photography</a>
+                </h1>
+            </div>
+            <div class="flex__item--right">
+                <button class="menu-toggle" aria-label="Otevřít menu">
+                    <span class="hamburger"></span>
+                </button>
+                <nav class="menu">
+                    <a class="menu__item primary-text-color" href="index.html#kontakty">Kontakty</a>
+                    <a class="menu__item primary-text-color" href="https://eu.zonerama.com/rozeraw/1661836"
+                        target="_blank">Náhledy závodů</a>
+                    <a class="menu__item primary-text-color" href="index.html#o_mne">O mně</a>
+                    <a class="menu__item primary-text-color" href="index.html#nabidka">Nabídka</a>
+                    <a class="menu__item primary-text-color" href="portfolio.html">Portfolio</a>
+                </nav>
+                <nav class="social">
+                    <a class="social__item primary-text-color" href="https://www.facebook.com/roze.raw" target="_blank">
+                        <img src="assets/icons/brands/facebook.svg" alt="Facebook" style="width:19px; height:19px;">
+                    </a>
+                    <a class="social__item primary-text-color" href="https://www.instagram.com/roze.raw/"
+                        target="_blank">
+                        <img src="assets/icons/brands/instagram.svg" alt="Instagram">
+                    </a>
+                    <a class="social__item primary-text-color" href="https://eu.zonerama.com/rozeraw/1591225"
+                        target="_blank" style="padding-right:0;">
+                        <img src="assets/icons/brands/camera.svg" alt="Zonerama" style="width:24px; height:24px;">
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="text-mont-400 error-page">
+        <div class="container error">
+            <h2 class="section__title secondary-text-color">404</h2>
+
+            <h3>Jejda, tato stránka neexistuje!</h3>
+            <p>Stránka, kterou hledáte, byla možná přesunuta, smazána nebo jste zadali špatnou adresu.</p>
+
+            <div class="portfolio__more-link">
+                <a class="background__color--tertiary" href="index.html">Zpět na hlavní stránku</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

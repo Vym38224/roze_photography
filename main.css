@@ -14,8 +14,10 @@ body {
     overflow-y: auto;
 }
 
-html, body {
-    overflow-x: hidden; /* Zakáže jakékoliv posouvání do stran */
+html,
+body {
+    overflow-x: hidden;
+    /* Zakáže jakékoliv posouvání do stran */
     max-width: 100%;
 }
 
@@ -80,8 +82,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; 
-    max-width: 100vw; 
+    width: 100%;
+    max-width: 100vw;
     background-color: rgba(255, 255, 255, 0);
     z-index: 1000;
     height: 70px;
@@ -104,7 +106,8 @@ header.header--scrolled {
     background-color: var(--bg-color-primary)
 }
 
-section {
+section,
+.error-page {
     padding-top: 6em;
     padding-bottom: 4em;
 }
@@ -135,11 +138,14 @@ section {
     height: 95vh;
 }
 
-.portfolio-divider-scnd { 
-    background-image: url('assets/pictures/prechody/psi_26.jpg')}
+.portfolio-divider-scnd {
+    background-image: url('assets/pictures/prechody/psi_26.jpg')
+}
 
-@media (max-width:720px){
-    .portfolio-divider-scnd { background-image: url('assets/pictures/prechody/psi_27.jpg');}
+@media (max-width:720px) {
+    .portfolio-divider-scnd {
+        background-image: url('assets/pictures/prechody/psi_27.jpg');
+    }
 }
 
 @keyframes hero-title-rise {
@@ -418,19 +424,19 @@ h3 h4 {
 }
 
 @media (max-width: 560px) {
-    .first{
+    .first {
         height: 26vh;
         min-height: 26vh;
         background-position: 59% 30%;
     }
 
-    .scnd{
+    .scnd {
         height: 26vh;
         min-height: 26vh;
         background-position: 58% center;
     }
 
-    .port{
+    .port {
         height: 26vh;
         min-height: 26vh;
         background-position: 53% 50%;
@@ -639,7 +645,7 @@ s .flex__touch--item img {
     transition: transform 0.3s, opacity 0.3s;
     position: relative;
     padding: 12px 0;
-    background-clip: content-box; 
+    background-clip: content-box;
     box-sizing: content-box;
 }
 
@@ -711,7 +717,7 @@ s .flex__touch--item img {
 /* social icons */
 .social {
     display: flex;
-    gap:2px;
+    gap: 2px;
     align-items: center
 }
 
@@ -720,7 +726,7 @@ s .flex__touch--item img {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding:8px;
+    padding: 8px;
 }
 
 .social__item img {
@@ -1123,47 +1129,48 @@ footer div {
 
 @media (max-width:1444px) {
 
-        .photo-lightbox__content {
-        max-height: calc(100vh - 120px); /* Ponechá prostor dole pro šipky */
-        }
-
-        .photo-lightbox__image {
-            max-height: calc(100vh - 160px);
-            object-fit: contain;
-        }
-
-        /* Přemístění šipek dolů pod obrázek */
-        .photo-lightbox__nav {
-            position: absolute;
-            top: auto;
-            bottom: 15px;
-            transform: none;
-            z-index: 1010;
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff;
-            font-size: 1.4rem;
-            border: none;
-            border-radius: 999px;
-            padding: 0;
-
-        }
-
-        .photo-lightbox__nav--prev {
-            left: 25%;
-        }
-
-        .photo-lightbox__nav--next {
-            right: 25%;
-        }
-
-        /* Tlačítko zavření zůstane vpravo nahoře */
-        .photo-lightbox__close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 1010;
-        }
+    .photo-lightbox__content {
+        max-height: calc(100vh - 120px);
+        /* Ponechá prostor dole pro šipky */
     }
+
+    .photo-lightbox__image {
+        max-height: calc(100vh - 160px);
+        object-fit: contain;
+    }
+
+    /* Přemístění šipek dolů pod obrázek */
+    .photo-lightbox__nav {
+        position: absolute;
+        top: auto;
+        bottom: 15px;
+        transform: none;
+        z-index: 1010;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 1.4rem;
+        border: none;
+        border-radius: 999px;
+        padding: 0;
+
+    }
+
+    .photo-lightbox__nav--prev {
+        left: 25%;
+    }
+
+    .photo-lightbox__nav--next {
+        right: 25%;
+    }
+
+    /* Tlačítko zavření zůstane vpravo nahoře */
+    .photo-lightbox__close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 1010;
+    }
+}
 
 #portfolio img,
 #omne img {
@@ -1298,8 +1305,7 @@ footer div {
 }
 
 .portfolio__more-link a,
-.portfolio__more-link button
- {
+.portfolio__more-link button {
     display: inline-block;
     padding: 0.7rem 2.4rem;
     font-size: 18px;
@@ -1329,8 +1335,7 @@ footer div {
 }
 
 .portfolio__more-link a:hover,
-.portfolio__more-link button:hover
- {
+.portfolio__more-link button:hover {
     background: #254a71;
 }
 
@@ -1398,74 +1403,73 @@ footer div {
 }
 
 .cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--bg-color-secondary);
-  color: var(--text-color-primary);
-  padding: 1rem;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 9999;
-  box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-color-secondary);
+    color: var(--text-color-primary);
+    padding: 1rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    box-sizing: border-box;
 }
 
 .cookie-content {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .cookie-content p {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  flex: 1 1 300px;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    flex: 1 1 300px;
 }
 
 .cookie-buttons {
-  display: flex;
-  gap: 0.75rem;
+    display: flex;
+    gap: 0.75rem;
 }
 
 .btn {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.9rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: opacity 0.2s ease, transform 0.1s ease;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.9rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: opacity 0.2s ease, transform 0.1s ease;
 }
 
 .btn:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .btn:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 .btn-accept {
-  background-color: var(--bg-color-tertiary);
-  color: var(--bg-color-primary);
+    background-color: var(--bg-color-tertiary);
+    color: var(--bg-color-primary);
 }
 
 .btn-reject {
-  background-color: var(--bg-color-secondary);
-  color: var(--text-color-secondary);
-  border: 0.5px solid var(--bg-color-tertiary);
-  opacity: 0.9;
+    background-color: var(--bg-color-secondary);
+    color: var(--text-color-secondary);
+    border: 0.5px solid var(--bg-color-tertiary);
+    opacity: 0.9;
 }
-
 
 @media (max-width: 820px) {
 
@@ -1484,7 +1488,7 @@ footer div {
         justify-content: center;
         text-align: center;
         width: 100%;
-        gap:7.5px;
+        gap: 7.5px;
     }
 
     .nabidka__cards .package--left {
@@ -1505,28 +1509,28 @@ footer div {
     }
 
     .package.is-visible {
-    animation: none;
-}
+        animation: none;
+    }
 
-    .flex{
-            flex-direction: column;
-        }
+    .flex {
+        flex-direction: column;
+    }
 
-    .flex__item-left{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .flex__item-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .upper_form {
-            margin-top: 2em;
-            display: block;
-            margin-right:0;
-        }
+        margin-top: 2em;
+        display: block;
+        margin-right: 0;
+    }
 
     .portfolio {
-            background-position: 40% 73%;
-        }
+        background-position: 40% 73%;
+    }
 
 
 }
@@ -1537,6 +1541,7 @@ footer div {
     .portfolio-gallery-grid {
         column-count: 1;
     }
+
     .cookie-buttons {
         display: flex;
         gap: 0.75rem;
@@ -1561,7 +1566,7 @@ footer div {
         .portfolio-gallery-grid {
             grid-template-columns: 1fr;
         }
-        
+
     }
 
     /* responzivní */
@@ -1678,6 +1683,7 @@ footer div {
         .inside_flex__item:last-child {
             padding-top: 2em;
         }
+
         .inside_flex__item:first-child {
             padding-top: 2em;
         }
@@ -1764,6 +1770,13 @@ footer div {
         footer {
             flex-direction: column;
             font-size: 6px;
+        }
+
+        .error {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
