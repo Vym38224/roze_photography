@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Blokování AI crawlerů (ochrana fotek před trénováním AI)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# Odkaz na sitemapu
+Sitemap: https://rozephotography.cz/sitemap.xml
