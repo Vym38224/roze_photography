@@ -1,0 +1,4 @@
+# Citliva lokalni konfigurace
+/admin-config.php
+/.env
+/.env.*

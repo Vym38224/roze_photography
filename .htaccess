@@ -1,5 +1,10 @@
 ErrorDocument 404 /404.html
 
+# Lokalni konfigurace nesmi byt verejne dostupna
+<FilesMatch "^admin-config\.php$">
+    Require all denied
+</FilesMatch>
+
 # Zapnutí kešování obrázků a statických souborů na 1 rok (WEDOS Apache)
 <IfModule mod_expires.c>
     ExpiresActive On
@@ -19,9 +24,19 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 <IfModule mod_headers.c>
-    <FilesMatch "\.(avif|webp|jpe?g|png|svg|css|js|woff2)$">
+    <FilesMatch "\.(avif|webp|jpe?g|png|svg)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+    <FilesMatch "\.(css|js|woff2)$">
         Header set Cache-Control "max-age=31536000, public, immutable"
     </FilesMatch>
+</IfModule>
+
+# Administrace i verejny web musi bezet pouze pres HTTPS.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # Přesměrování starých podstránek na odpovídající sekce nového webu
